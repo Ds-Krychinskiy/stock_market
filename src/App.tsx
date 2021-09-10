@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Header from "./componens/Header";
+import TSStocks from "./componens/Stocks/TSStocks";
+import TSEtf from "./componens/Etf/TSEtf";
+import TSIndices from "./componens/Indices/TSIndices";
+import TSCurrency from "./componens/Currency/TSCurrency";
+import TSCryptocurrency from "./componens/Cryptocurrency/TSCryptocurrency";
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/stock_market">
+            <TSStocks />
+          </Route>
+          <Route path="/etf">
+            <TSEtf />
+          </Route>
+          <Route path="/indices">
+            <TSIndices />
+          </Route>
+          <Route path="/currency">
+            <TSCurrency />
+          </Route>
+          <Route path="/cryptocurrency">
+            <TSCryptocurrency />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
