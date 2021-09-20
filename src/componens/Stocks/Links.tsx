@@ -1,54 +1,80 @@
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
+import {
+  FinancialIndicators,
+  StockNews,
+  SecFilings,
+  KeyExecutives,
+  CompanyProfile,
+  CompanyFinancialStatements,
+  StockCompaniesPrice,
+} from "../../routes";
+import { useState, useEffect } from "react";
 
 interface ILinksProps {}
 
 const Links: React.FC<ILinksProps> = () => {
+  const [selectedTab, setSelectedTab] = useState(FinancialIndicators);
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelectedTab(location.pathname.split("/")[2]);
+  }, [location]);
+
   const history = useHistory();
+
   const goToTheFinancialIndicators = () => {
-    history.push("/stock_market/company_financial_ratios");
+    history.push(FinancialIndicators);
   };
   const goToStockNews = () => {
-    history.push("/stock_market/stock_news");
+    history.push(StockNews);
   };
   const goToSecFilings = () => {
-    history.push("/stock_market/sec_filings");
+    history.push(SecFilings);
   };
   const goToKeyExecutives = () => {
-    history.push("/stock_market/key_executives");
+    history.push(KeyExecutives);
   };
   const goToCompanyProfile = () => {
-    history.push("/stock_market/company_profile");
+    history.push(CompanyProfile);
   };
   const goToCompanyFinancialStatements = () => {
-    history.push("/stock_market/company_financial_statements");
+    history.push(CompanyFinancialStatements);
   };
   const goToStockCompaniesPrice = () => {
-    history.push("/stock_market/companies_price");
+    history.push(StockCompaniesPrice);
   };
 
   return (
     <div>
-      <Tabs aria-label="simple tabs example">
+      <Tabs value={selectedTab} aria-label="simple tabs example">
         <Tab
-          value={0}
+          value={FinancialIndicators}
           onClick={goToTheFinancialIndicators}
           label="Company Financial Ratios!"
         />
-        <Tab value={1} onClick={goToStockNews} label="Stock News" />
-        <Tab value={2} onClick={goToSecFilings} label="SEC Filings!" />
-        <Tab value={3} onClick={goToKeyExecutives} label="Key Executives" />
-        <Tab value={4} onClick={goToCompanyProfile} label="Company Profile!" />
+        <Tab value={StockNews} onClick={goToStockNews} label="Stock News" />
+        <Tab value={SecFilings} onClick={goToSecFilings} label="SEC Filings!" />
         <Tab
-          value={5}
+          value={KeyExecutives}
+          onClick={goToKeyExecutives}
+          label="Key Executives"
+        />
+        <Tab
+          value={CompanyProfile}
+          onClick={goToCompanyProfile}
+          label="Company Profile!"
+        />
+        <Tab
+          value={CompanyFinancialStatements}
           onClick={goToCompanyFinancialStatements}
           label="Company Financial Statements!"
         />
         <Tab
-          value={6}
+          value={StockCompaniesPrice}
           onClick={goToStockCompaniesPrice}
-          label="Batch Request Stock Companies Price"
+          label="Stock Companies Price"
         />
       </Tabs>
     </div>

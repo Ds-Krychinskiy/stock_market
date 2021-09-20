@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./componens/Header";
+import Home from "./componens/Home/Home";
 import TSStocks from "./componens/Stocks/TSStocks";
 import TSEtf from "./componens/Etf/TSEtf";
 import TSIndices from "./componens/Indices/TSIndices";
@@ -15,6 +16,9 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
           <Route path="/stock_market">
             <TSStocks />
           </Route>

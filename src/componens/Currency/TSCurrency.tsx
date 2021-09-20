@@ -1,30 +1,50 @@
 import InputCurrency from "./InputCurrency";
-import { useState } from "react";
-import axios from "axios";
-import Links from "./Links";
+import CurrentValue from "./components/CurrentValue";
+import HistoricalData from "./components/HistoricalData";
+import axios from "../../axios";
 
-interface ICurrency {}
+import { useState } from "react";
+import Links from "./Links";
+import { Route, Switch } from "react-router";
+
+interface ICurrency {
+  ticker: string;
+  bid: string;
+  ask: string;
+  open: string;
+  low: string;
+  high: string;
+  changes: string;
+  date: string;
+}
 
 const TSCurrency = () => {
-  const [value, setValue] = useState("");
+  const [fx, setFx] = useState("");
 
-  const apikey = "e2dc68a4357331f2d4385f9312fbbade";
-  const [currency, setCurrency] = useState<ICurrency[]>([]);
+  const [currencies, setCurrency] = useState<ICurrency[]>([]);
 
-  const apiUrl = `https://financialmodelingprep.com/api/v3/fx/${value}?apikey=${apikey}`;
-  const privateAxios = axios.create({ baseURL: apiUrl });
   const onAdd = (value: string) => {
-    privateAxios
-      .get(apiUrl)
-      .then((response) => console.log(response.data))
+    axios
+      .get(`fx?`)
+      .then((response) => setCurrency(response.data))
       .catch((error) => {
         console.log("Sorry, Bro");
       });
+
+    setFx(value);
   };
   return (
     <>
-      <InputCurrency value={value} setValue={setValue} />;
+      <InputCurrency onAdd={onAdd} />
       <Links />
+      <Switch>
+        <Route path="/currency/current_value">
+          <CurrentValue currencies={currencies} fx={fx} />
+        </Route>
+        <Route path="/currency/historical_data">
+          <HistoricalData fx={fx} />
+        </Route>
+      </Switch>
     </>
   );
 };

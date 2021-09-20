@@ -1,13 +1,17 @@
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
+import { useState } from "react";
 
 interface IInputEtfProps {
-  onClick: () => void;
-  setValue: (name: string) => void;
-  value: string;
+  onAdd: (name: string) => void;
 }
 
-const InputEtf: React.FC<IInputEtfProps> = ({ value, setValue, onClick }) => {
+const InputEtf: React.FC<IInputEtfProps> = ({ onAdd }) => {
+  const [value, setValue] = useState("");
+  const onClick = () => {
+    onAdd(value);
+    setValue("");
+  };
   return (
     <>
       <TextField
