@@ -1,12 +1,19 @@
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 
+import { useState } from "react";
+
 interface IInputCurrencyProps {
-  setValue: (name: string) => void;
-  value: string;
+  onAdd: (name: string) => void;
 }
 
-const InputCurrency: React.FC<IInputCurrencyProps> = ({ value, setValue }) => {
+const InputCurrency: React.FC<IInputCurrencyProps> = ({ onAdd }) => {
+  const [value, setValue] = useState("");
+
+  const onClick = () => {
+    onAdd(value);
+    setValue("");
+  };
   return (
     <>
       <TextField
@@ -15,7 +22,7 @@ const InputCurrency: React.FC<IInputCurrencyProps> = ({ value, setValue }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <Button>
+      <Button onClick={onClick}>
         <p>Save</p>
       </Button>
     </>
