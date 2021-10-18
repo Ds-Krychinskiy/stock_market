@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "../../axios";
 import { Route, Switch } from "react-router";
+import styled from "styled-components";
 
 import InputStock from "./InputStock";
 import Links from "./Links";
@@ -12,8 +13,13 @@ import StockNews from "./сomponents/StockNews";
 import KeyExecutives from "./сomponents/KeyExecutives";
 import StockCompaniesPrice from "./сomponents/StockCompaniesPrice";
 
-
 import * as routes from "../../routes";
+import StockScreener from "../StockScreener/StockScreener";
+
+const InputStyles = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 interface ITSStocks {
   peRatioTTM: number;
@@ -83,11 +89,13 @@ const TSStocks = () => {
 
   return (
     <>
-      <InputStock onAdd={onAdd} />
+      <InputStyles>
+        <InputStock onAdd={onAdd} />
+      </InputStyles>
       <Links />
       <Switch>
         <Route path={`/${routes.StockMarket}/${routes.FinancialIndicators}`}>
-          <CompanyFinancial stocks={stocks} />
+          <CompanyFinancial tiker={tiker} stocks={stocks} />
         </Route>
 
         <Route path={`/${routes.StockMarket}/${routes.SecFilings}`}>
@@ -98,7 +106,9 @@ const TSStocks = () => {
           <CompanyProfile tiker={tiker} />
         </Route>
 
-        <Route path={`/${routes.StockMarket}/${routes.CompanyFinancialStatements}`}>
+        <Route
+          path={`/${routes.StockMarket}/${routes.CompanyFinancialStatements}`}
+        >
           <CompanyFS tiker={tiker} />
         </Route>
 

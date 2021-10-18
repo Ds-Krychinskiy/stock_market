@@ -1,3 +1,15 @@
+import { useState, useEffect} from "react";
+import * as React from 'react';
+
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
+import TableHead from "@material-ui/core/TableHead";
+import Table from "@material-ui/core/Table";
+
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 interface ITSStocks {
   peRatioTTM: number;
   pegRatioTTM: number;
@@ -11,7 +23,6 @@ interface ITSStocks {
   returnOnAssetsTTM: number;
   returnOnEquityTTM: number;
   returnOnCapitalEmployedTTM: number;
-
   dividendYielTTM: number;
   cashRatioTTM: number;
   daysOfSalesOutstandingTTM: number;
@@ -49,97 +60,149 @@ interface ITSStocks {
 
 interface ICompanyFinancialProps {
   stocks: ITSStocks[];
+  tiker: string;
 }
 
-const CompanyFinancial: React.FC<ICompanyFinancialProps> = ({ stocks }) => {
+const CompanyFinancial: React.FC<ICompanyFinancialProps> = ({
+  stocks,
+  tiker,
+}) => {
+  const [showTable, setShowTable] = useState(false);
+  console.log("CompanyFinancial")
+  const ShowTable = () => {
+    if (!!tiker === true) {
+      setShowTable((el) => !el);
+    }
+  };
+
+  useEffect(() => {
+    ShowTable();
+  }, [tiker]);
+
+  
   return (
-    <div>
-      {stocks.map((stock) => (
-        <ol>
-          <li>P/E: {stock.peRatioTTM}</li>
-          <li>PEG: {stock.pegRatioTTM}</li>
-          <li>Коэффициент выплат: {stock.payoutRatioTTM}</li>
-          <li>Коэффициент текущей ликвидности: {stock.currentRatioTTM}</li>
-          <li>Дивидендная доходность: {stock.dividendYielTTM}</li>
-          <li>Коэффициент выплат: {stock.payoutRatioTTM}</li>
-          <li>
-            Оборачиваемость оборотного капитала: {stock.operatingCycleTTM}
-          </li>
-          <li>
-            Количество дней до конца продаж: {stock.daysOfSalesOutstandingTTM}
-          </li>
-          <li>
-            Оборачиваемость оборотного капитала: {stock.operatingCycleTTM}
-          </li>
-          <li>
-            Количество дней к оплате: {stock.daysOfPayablesOutstandingTTM}
-          </li>
-          <li>
-            Цикл конвертации наличных денег: {stock.cashConversionCycleTTM}
-          </li>
-          <li>Валовая прибыль: {stock.grossProfitMarginTTM}</li>
-          <li>Маржа опарационнаой прибыли: {stock.operatingProfitMarginTTM}</li>
-          <li>
-            Маржа прибыли до налогообложения: {stock.pretaxProfitMarginTTM}
-          </li>
-          <li>Маржа чистой прибыли: {stock.netProfitMarginTTM}</li>
-          <li>Эффективная нологовая ставка: {stock.effectiveTaxRateTTM}</li>
-          <li>ROA: {stock.returnOnAssetsTTM}</li>
-          <li>ROE: {stock.returnOnEquityTTM}</li>
-          <li>
-            Доход на вложенный капитал: {stock.returnOnCapitalEmployedTTM}
-          </li>
-          <li>EBIT/EV: {stock.ebtPerEbitTTM}</li>
-          <li>D/E: {stock.debtRatioTTM}</li>
-          <li>
-            Отношение долгосрочной задолженности к капитализации:{" "}
-            {stock.longTermDebtToCapitalizationTTM}
-          </li>
-          <li>Коэффициент покрытия процентов: {stock.interestCoverageTTM}</li>
-          <li>
-            Отношение денежного потока к долгу: {stock.cashFlowToDebtRatioTTM}
-          </li>
-          <li>
-            Мультипликатор собственного капитала:{" "}
-            {stock.companyEquityMultiplierTTM}
-          </li>
-          <li>
-            Коэффициент оборачиваемости дебиторской задолжнности:{" "}
-            {stock.receivablesTurnoverTTM}{" "}
-          </li>
-          <li>
-            Коэффициент оборачиваемости запасов: {stock.inventoryTurnoverTTM}
-          </li>
-          <li>
-            Оборот активов в ходе хозяйственной деятельности:{" "}
-            {stock.fixedAssetTurnoverTTM}{" "}
-          </li>
-          <li>
-            Операционный денежный поток на акцию:{" "}
-            {stock.operatingCashFlowPerShareTTM}
-          </li>
-          <li>
-            Свободный денежный поток на акцию: {stock.freeCashFlowPerShareTTM}
-          </li>
-          <li>Денежный поток на акцию: {stock.cashPerShareTTM}</li>
-          <li>
-            Операционный денежный поток / коэффициент продаж:{" "}
-            {stock.operatingCashFlowSalesRatioTTM}
-          </li>
-          <li>P/OCF: {stock.freeCashFlowOperatingCashFlowRatioTTM}</li>
-          <li>
-            Отношение денежного потока к долгу:{" "}
-            {stock.cashFlowCoverageRatiosTTM}
-          </li>
-          <li>P/B: {stock.priceBookValueRatioTTM}</li>
-          <li>P/S: {stock.priceToSalesRatioTTM}</li>
-          <li>P/FCF: {stock.priceToFreeCashFlowsRatioTTM}</li>
-          <li>Дивидендная доходность: {stock.dividendYieldTTM}</li>
-          <li>Справедливая стоимость: {stock.priceFairValueTTM}</li>
-          <li>DPS: {stock.dividendPerShareTTM}</li>
-        </ol>
-      ))}
-    </div>
+    <>
+      {showTable && (
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              <TableCell>{tiker}</TableCell>
+            </TableRow>
+          </TableHead>
+          {stocks.map((stock) => (
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                
+                
+      
+                  <p>P/E: {stock.peRatioTTM}</p>
+                  <p>PEG: {stock.pegRatioTTM}</p>
+                  <p>Коэффициент выплат: {stock.payoutRatioTTM}</p>
+                  <p>
+                    Коэффициент текущей ликвидности: {stock.currentRatioTTM}
+                  </p>
+                  <p>Дивидендная доходность: {stock.dividendYielTTM}</p>
+                  <p>Коэффициент выплат: {stock.payoutRatioTTM}</p>
+                  <p>
+                    Оборачиваемость оборотного капитала:{" "}
+                    {stock.operatingCycleTTM}
+                  </p>
+                  <p>
+                    Количество дней до конца продаж:{" "}
+                    {stock.daysOfSalesOutstandingTTM}
+                  </p>
+                  <p>
+                    Оборачиваемость оборотного капитала:{" "}
+                    {stock.operatingCycleTTM}
+                  </p>
+                  <p>
+                    Количество дней к оплате:{" "}
+                    {stock.daysOfPayablesOutstandingTTM}
+                  </p>
+                  <p>
+                    Цикл конвертации наличных денег:{" "}
+                    {stock.cashConversionCycleTTM}
+                  </p>
+                  <p>Валовая прибыль: {stock.grossProfitMarginTTM}</p>
+                  <p>
+                    Маржа опарационнаой прибыли:{" "}
+                    {stock.operatingProfitMarginTTM}
+                  </p>
+                  <p>
+                    Маржа прибыли до налогообложения:{" "}
+                    {stock.pretaxProfitMarginTTM}
+                  </p>
+                  <p>Маржа чистой прибыли: {stock.netProfitMarginTTM}</p>
+                  <p>
+                    Эффективная нологовая ставка: {stock.effectiveTaxRateTTM}
+                  </p>
+                  <p>ROA: {stock.returnOnAssetsTTM}</p>
+                  <p>ROE: {stock.returnOnEquityTTM}</p>
+                  <p>
+                    Доход на вложенный капитал:{" "}
+                    {stock.returnOnCapitalEmployedTTM}
+                  </p>
+                  <p>EBIT/EV: {stock.ebtPerEbitTTM}</p>
+                  <p>D/E: {stock.debtRatioTTM}</p>
+                  <p>
+                    Отношение долгосрочной задолженности к капитализации:{" "}
+                    {stock.longTermDebtToCapitalizationTTM}
+                  </p>
+                  <p>
+                    Коэффициент покрытия процентов: {stock.interestCoverageTTM}
+                  </p>
+                  <p>
+                    Отношение денежного потока к долгу:{" "}
+                    {stock.cashFlowToDebtRatioTTM}
+                  </p>
+                  <p>
+                    Мультипликатор собственного капитала:{" "}
+                    {stock.companyEquityMultiplierTTM}
+                  </p>
+                  <p>
+                    Коэффициент оборачиваемости дебиторской задолжнности:{" "}
+                    {stock.receivablesTurnoverTTM}
+                  </p>
+                  <p>
+                    Коэффициент оборачиваемости запасов:{" "}
+                    {stock.inventoryTurnoverTTM}
+                  </p>
+                  <p>
+                    Оборот активов в ходе хозяйственной деятельности:{" "}
+                    {stock.fixedAssetTurnoverTTM}
+                  </p>
+                  <p>
+                    Операционный денежный поток на акцию:{" "}
+                    {stock.operatingCashFlowPerShareTTM}
+                  </p>
+                  <p>
+                    Свободный денежный поток на акцию:{" "}
+                    {stock.freeCashFlowPerShareTTM}
+                  </p>
+                  <p>Денежный поток на акцию: {stock.cashPerShareTTM}</p>
+                  <p>
+                    Операционный денежный поток / коэффициент продаж:{" "}
+                    {stock.operatingCashFlowSalesRatioTTM}
+                  </p>
+                  <p>P/OCF: {stock.freeCashFlowOperatingCashFlowRatioTTM}</p>
+                  <p>
+                    Отношение денежного потока к долгу:{" "}
+                    {stock.cashFlowCoverageRatiosTTM}
+                  </p>
+                  <p>P/B: {stock.priceBookValueRatioTTM}</p>
+                  <p>P/S: {stock.priceToSalesRatioTTM}</p>
+                  <p>P/FCF: {stock.priceToFreeCashFlowsRatioTTM}</p>
+                  <p>Дивидендная доходность: {stock.dividendYieldTTM}</p>
+                  <p>Справедливая стоимость: {stock.priceFairValueTTM}</p>
+                  <p>DPS: {stock.dividendPerShareTTM}</p>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      )}
+    </>
   );
 };
 

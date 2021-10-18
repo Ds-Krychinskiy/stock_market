@@ -2,18 +2,15 @@ import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { useState } from "react";
 
-interface IInputCryptocurrencyProps {
-  onAdd: (name: string) => void;
+interface IInputStockProps {
+  onAdd: () => void;
 }
 
-const InputCryptocurrency: React.FC<IInputCryptocurrencyProps> = ({
-  onAdd,
-}) => {
-  const [tiker, setTiker] = useState("");
+const InputScreener: React.FC<IInputStockProps> = ({ onAdd }) => {
+  const [value, setValue] = useState("");
 
   const onClick = () => {
-    onAdd(tiker);
-    setTiker("");
+    onAdd();
   };
 
   return (
@@ -21,8 +18,8 @@ const InputCryptocurrency: React.FC<IInputCryptocurrencyProps> = ({
       <TextField
         className="input"
         label="Enter data"
-        value={tiker}
-        onChange={(e) => setTiker(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
       <Button onClick={onClick}>
         <p>Save</p>
@@ -31,4 +28,4 @@ const InputCryptocurrency: React.FC<IInputCryptocurrencyProps> = ({
   );
 };
 
-export default InputCryptocurrency;
+export default InputScreener;

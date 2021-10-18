@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "../../../axios";
 
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
+import TableHead from "@material-ui/core/TableHead";
+import Table from "@material-ui/core/Table";
+
 interface IFinancialRatios {
   date: string;
   symbol: string;
@@ -40,54 +46,78 @@ interface ICompanyFS {
 
 const CompanyFS: React.FC<ICompanyFS> = ({ tiker }) => {
   const [finance, setFinance] = useState<IFinancialRatios[]>([]);
+  const [showTable, setShowTable] = useState(false);
+
+  const ShowTable = () => {
+    if (!!tiker === true) {
+      setShowTable((el) => !el);
+    }
+  };
 
   useEffect(() => {
     axios
-        .get(`income-statement/${tiker}?limit=10`)
-        .then((response) => setFinance(response.data))
-        .catch((error) => {
-          console.log("Sorry, Bro");
-        });
+      .get(`income-statement/${tiker}?limit=10`)
+      .then((response) => setFinance(response.data))
+      .catch((error) => {
+        console.log("Sorry, Bro");
+      });
+    ShowTable();
   }, [tiker]);
 
   return (
     <>
-      {finance.map((e) => (
-        <div>
-          {e.symbol}
-          <ol>
-            <li>Дата публикации отчёта: {e.finalLink}</li>
-            <li>Валюта отчётности: {e.reportedCurrency}</li>
-            <li>Отчётный период: {e.period}</li>
-            <li>Доход: {e.revenue}</li>
-            <li>Валовой доход: {e.grossProfit}</li>
-            <li>Коэффициент валовой прибыли: {e.grossProfitRatio} </li>
-            <li>
-              Расходы на исследование и разработки:{" "}
-              {e.researchAndDevelopmentExpenses}
-            </li>
-            <li>
-              Общие и административные расходы:{" "}
-              {e.generalAndAdministrativeExpenses}
-            </li>
-            <li>Расходы на продажу: {e.sellingAndMarketingExpenses}</li>
-            <li>Опарационные расходы: {e.operatingExpenses}</li>
-            <li>износ и амортизация: {e.depreciationAndAmortization}</li>
-            <li>Прочие расходы: {e.otherExpenses}</li>
-            <li>Ebitda: {e.ebitda}</li>
-            <li>Операционная прибыль: {e.operatingIncome}</li>
-            <li>Операционная маржа: {e.operatingIncomeRatio}</li>
-            <li>прочие доходы: {e.totalOtherIncomeExpensesNet}</li>
-            <li>Доход до налогообложения: {e.incomeBeforeTax}</li>
-            <li>Расходы по налогу на прибыль: {e.incomeTaxExpense}</li>
-            <li>Чистая прибыль: {e.netIncome}</li>
-            <li>Коэффициент чистой прибыли: {e.netIncomeRatio}</li>
-            <li>Прибыль на акцию: {e.eps}</li>
-            <li>Ссылка на отчёт: {e.finalLink}</li>
-          </ol>
-        </div>
-      ))}
+      {showTable && (
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Company Financial Statements</TableCell>
+            </TableRow>
+          </TableHead>
+          {finance.map((e) => (
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  <p>Дата публикации отчёта: {e.date}</p>
+                  <p>Валюта отчётности: {e.reportedCurrency}</p>
+                  <p>Отчётный период: {e.period}</p>
+                  <p>Доход: {e.revenue}</p>
+                  <p>Валовой доход: {e.grossProfit}</p>
+                  <p>Коэффициент валовой прибыли: {e.grossProfitRatio} </p>
+                  <p>
+                    Расходы на исследование и разработки:{" "}
+                    {e.researchAndDevelopmentExpenses}
+                  </p>
+                  <p>
+                    Общие и административные расходы:{" "}
+                    {e.generalAndAdministrativeExpenses}
+                  </p>
+                  <p>Расходы на продажу: {e.sellingAndMarketingExpenses}</p>
+                  <p>Опарационные расходы: {e.operatingExpenses}</p>
+                  <p>износ и амортизация: {e.depreciationAndAmortization}</p>
+                  <p>Прочие расходы: {e.otherExpenses}</p>
+                  <p>Ebitda: {e.ebitda}</p>
+                  <p>Операционная прибыль: {e.operatingIncome}</p>
+                  <p>Операционная маржа: {e.operatingIncomeRatio}</p>
+                  <p>прочие доходы: {e.totalOtherIncomeExpensesNet}</p>
+                  <p>Доход до налогообложения: {e.incomeBeforeTax}</p>
+                  <p>Расходы по налогу на прибыль: {e.incomeTaxExpense}</p>
+                  <p>Чистая прибыль: {e.netIncome}</p>
+                  <p>Коэффициент чистой прибыли: {e.netIncomeRatio}</p>
+                  <p>Прибыль на акцию: {e.eps}</p>
+                  <p>
+                    Ссылка на отчёт:{" "}
+                    <a href={e.finalLink} target="_blank">
+                      {e.finalLink}
+                    </a>
+                  </p>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          ))}
+        </Table>
+      )}
     </>
   );
 };
+
 export default CompanyFS;

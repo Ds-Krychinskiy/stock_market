@@ -3,15 +3,18 @@ import { Button } from "@material-ui/core";
 import { useState } from "react";
 
 interface IInputEtfProps {
-  onAdd: (name: string) => void;
+  setTiker: (name: string) => void;
+  onAdd: () => void;
 }
 
-const InputEtf: React.FC<IInputEtfProps> = ({ onAdd }) => {
+const InputEtf: React.FC<IInputEtfProps> = ({ setTiker, onAdd }) => {
   const [value, setValue] = useState("");
   const onClick = () => {
-    onAdd(value);
+    onAdd();
     setValue("");
+    setTiker(value);
   };
+
   return (
     <>
       <TextField

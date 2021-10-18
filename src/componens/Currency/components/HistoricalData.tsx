@@ -15,6 +15,13 @@ interface IHistoricalData {
 
 const HistoricalData: React.FC<IHistoricalPricaProps> = ({ fx }) => {
   const [prices, setPrice] = useState<IHistoricalData[]>([]);
+  const [showTable, setShowTable] = useState(false);
+
+  const ShowTable = () => {
+    if (!!fx === true) {
+      setShowTable((el) => !el);
+    }
+  };
 
   useEffect(() => {
     const onAdd = (fx: string) => {
@@ -29,17 +36,21 @@ const HistoricalData: React.FC<IHistoricalPricaProps> = ({ fx }) => {
   }, [fx]);
 
   return (
-    <div>
-      {prices.map((price) => (
-        <ol>
-          <li>Тикер валютной пары: {fx}</li>
-          <li>Цена открытия: {price.open}</li>
-          <li>Наибольшая цена: {price.high}</li>
-          <li>Наименьшая цена: {price.low}</li>
-          <li>Цена закрытия: {price.close}</li>
-        </ol>
-      ))}
-    </div>
+    <>
+      {showTable && (
+        <div>
+          {prices.map((price) => (
+            <ol>
+              <li>Тикер валютной пары: {fx}</li>
+              <li>Цена открытия: {price.open}</li>
+              <li>Наибольшая цена: {price.high}</li>
+              <li>Наименьшая цена: {price.low}</li>
+              <li>Цена закрытия: {price.close}</li>
+            </ol>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 export default HistoricalData;

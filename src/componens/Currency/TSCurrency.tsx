@@ -2,6 +2,7 @@ import InputCurrency from "./InputCurrency";
 import CurrentValue from "./components/CurrentValue";
 import HistoricalData from "./components/HistoricalData";
 import axios from "../../axios";
+import * as routes from "../../routes";
 
 import { useState } from "react";
 import Links from "./Links";
@@ -38,10 +39,10 @@ const TSCurrency = () => {
       <InputCurrency onAdd={onAdd} />
       <Links />
       <Switch>
-        <Route path="/currency/current_value">
+        <Route path={`/${routes.currency}/${routes.CurrentValue}`}>
           <CurrentValue currencies={currencies} fx={fx} />
         </Route>
-        <Route path="/currency/historical_data">
+        <Route path={`/${routes.currency}/${routes.HistoricalData}`}>
           <HistoricalData fx={fx} />
         </Route>
       </Switch>

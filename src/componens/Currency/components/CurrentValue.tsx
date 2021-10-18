@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 interface ICurrency {
   ticker: string;
   bid: string;
@@ -15,23 +17,39 @@ interface ICurrentValueProps {
 }
 
 const CurrentValue: React.FC<ICurrentValueProps> = ({ currencies, fx }) => {
+  const [showTable, setShowTable] = useState(false);
+
+  const ShowTable = () => {
+    if (!!fx === true) {
+      setShowTable((el) => !el);
+    }
+  };
+
+  useEffect(() => {
+    ShowTable();
+  }, [fx]);
+
   return (
-    <div>
-      {currencies
-        .filter((currency) => currency.ticker.includes(fx))
-        .map((currency) => (
-          <ol>
-            <li>Тикер валютной пары: {currency.ticker}</li>
-            <li>Bid: {currency.bid}</li>
-            <li>Ask: {currency.ask}</li>
-            <li>Open: {currency.open}</li>
-            <li>Low: {currency.low}</li>
-            <li>High: {currency.high}</li>
-            <li>Changes: {currency.changes}</li>
-            <li>Даты: {currency.date}</li>
-          </ol>
-        ))}
-    </div>
+    <>
+      {showTable && (
+        <div>
+          {currencies
+            .filter((currency) => currency.ticker.includes(fx))
+            .map((currency) => (
+              <ol>
+                <li>Тикер валютной пары: {currency.ticker}</li>
+                <li>Bid: {currency.bid}</li>
+                <li>Ask: {currency.ask}</li>
+                <li>Open: {currency.open}</li>
+                <li>Low: {currency.low}</li>
+                <li>High: {currency.high}</li>
+                <li>Changes: {currency.changes}</li>
+                <li>Даты: {currency.date}</li>
+              </ol>
+            ))}
+        </div>
+      )}
+    </>
   );
 };
 

@@ -24,20 +24,18 @@ const Links = () => {
   };
 
   return (
-    <div>
-      <Tabs value={selectedTab} aria-label="simple tabs example">
-        <Tab
-          value={CurrentValue}
-          onClick={showCurrentValue}
-          label="Current Value"
-        />
-        <Tab
-          value={HistoricalData}
-          onClick={showHistoricalData}
-          label="Historical Data"
-        />
-      </Tabs>
-    </div>
+    <Tabs value={selectedTab} aria-label="simple tabs example">
+      <Tab
+        value={CurrentValue}
+        onClick={showCurrentValue}
+        label="Current Value"
+      />
+      <Tab
+        value={HistoricalData}
+        onClick={showHistoricalData}
+        label="Historical Data"
+      />
+    </Tabs>
   );
 };
 export default Links;
