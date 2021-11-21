@@ -1,5 +1,5 @@
 import React from "react";
-import Links from "../../molecules/link/link";
+import Links from "../../atoms/link/link";
 import { LinkBarStyle } from "./style";
 
 const LinkBar = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "../../atoms/typography";
+import Typography from "../typography";
 import { TabsStyle } from "./style";
 
 interface ITabsProps {
@@ -9,7 +9,7 @@ interface ITabsProps {
 const Tabs: React.FC<ITabsProps> = ({ children }) => {
   return (
     <TabsStyle>
-      <Typography variant="tab">{children}</Typography>
+      <Typography>{children}</Typography>
     </TabsStyle>
   );
 };

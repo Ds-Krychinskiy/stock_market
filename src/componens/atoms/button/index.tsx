@@ -4,7 +4,7 @@ import { ButtonStyle } from "./style";
 interface IButtonProps {}
 
 const Button: React.FC<IButtonProps> = () => {
-  return <ButtonStyle></ButtonStyle>;
+  return <ButtonStyle>Save</ButtonStyle>;
 };
 
 export default Button;
