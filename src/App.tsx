@@ -1,57 +1,29 @@
-import styled from "styled-components";
+import React from "react";
+import LinkBar from "./componens/organisms/nav-bar";
+import StockMarket from "./componens/templates/stock_market";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import Header from "./componens/Header";
-import Home from "./componens/Home/Home";
-import TSStocks from "./componens/Stocks/TSStocks";
-import TSEtf from "./componens/Etf/TSEtf";
-import TSIndices from "./componens/Indices/TSIndices";
-import TSCurrency from "./componens/Currency/TSCurrency";
-import TSCryptocurrency from "./componens/Cryptocurrency/TSCryptocurrency";
-import StockScreener from "./componens/StockScreener/StockScreener";
-
-const AppWrapper = styled.div`
-  padding-left: 250px;
-  padding-right: 250px;
-  padding-top: 50px;
-`;
 
 const App = () => {
   return (
-    <AppWrapper>
+    <div>
       <Router>
-        <Header />
+        <LinkBar />
         <Switch>
-          <Route path="/home">
-            <Home />
+          <Route path="/stock_marker">
+            <StockMarket variant={"stock"} />
           </Route>
-
-          <Route path="/stock_screener">
-            <StockScreener />
-          </Route>
-
-          <Route path="/stock_market">
-            <TSStocks />
-          </Route>
-
           <Route path="/etf">
-            <TSEtf />
+            <StockMarket variant={"etf"} />
           </Route>
-
-          <Route path="/indices">
-            <TSIndices />
-          </Route>
-
           <Route path="/currency">
-            <TSCurrency />
+            <StockMarket variant={"currency"} />
           </Route>
-
           <Route path="/cryptocurrency">
-            <TSCryptocurrency />
+            <StockMarket variant={"cryptocurrency"} />
           </Route>
         </Switch>
       </Router>
-    </AppWrapper>
+    </div>
   );
 };
 
