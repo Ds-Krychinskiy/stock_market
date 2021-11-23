@@ -1,7 +1,8 @@
 export const StockMarket = "stock_market";
 export const Etf = "etf";
-export const currency = "currency";
+export const Currency = "currency";
 export const StockScreener = "stock_screener";
+export const Cryptocurrency = "cryptocurrency";
 
 export const FinancialIndicators = "company_financial_ratios";
 export const StockNews = "stock_news";

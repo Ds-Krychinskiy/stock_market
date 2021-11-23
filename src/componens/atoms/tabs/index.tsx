@@ -1,16 +1,13 @@
 import React from "react";
-import Typography from "../typography";
-import { TabsStyle } from "./style";
+import Tab from "@mui/material/Tab";
 
 interface ITabsProps {
-  children: string;
+  label: string;
+  value: string;
+  onClick?: () => void;
 }
 
-const Tabs: React.FC<ITabsProps> = ({ children }) => {
-  return (
-    <TabsStyle>
-      <Typography>{children}</Typography>
-    </TabsStyle>
-  );
+const TabsComponent: React.FC<ITabsProps> = ({ label, value, onClick }) => {
+  return <Tab value={value} onClick={onClick} label={label} />;
 };
-export default Tabs;
+export default TabsComponent;

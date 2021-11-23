@@ -1,10 +1,13 @@
 import React from "react";
 import { ButtonStyle } from "./style";
 
-interface IButtonProps {}
+interface IButtonProps {
+  onClick: () => void;
+}
 
-const Button: React.FC<IButtonProps> = () => {
-  return <ButtonStyle>Save</ButtonStyle>;
+const Button: React.FC<IButtonProps> = ({onClick}) => {
+  
+  return <ButtonStyle onClick={() => onClick()}>Save</ButtonStyle>;
 };
 
 export default Button;

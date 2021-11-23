@@ -1,7 +1,7 @@
 import React from "react";
-import Currency from "./Currency";
-import Etf from "./Etf";
-import StockMarket from "./Stock_Market";
+import Currency from "./componens/Currency";
+import Etf from "./componens/Etf";
+import StockMarket from "./componens/Stock_Market";
 
 interface ITabsBarProps {
   variant: "stock" | "etf" | "currency" | "cryptocurrency";
