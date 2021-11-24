@@ -1,42 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { Route, Switch } from "react-router";
 import InputMolecule from "../../molecules/input";
+
+import CompanyFR from "../../organisms/table/componens/Stock_market/Companu_Financial_Rations";
+
 import TabsBar from "../../organisms/tabs-bar";
 
-interface IStockMarkerProps {
-  variant: "stock" | "etf" | "currency" | "cryptocurrency";
-}
+import * as routes from "../../../routes";
+import CompanyFS from "../../organisms/table/componens/Stock_market/Company_Financial_Statements";
+import CompanyProfile from "../../organisms/table/componens/Stock_market/Company_Profile";
+import KeyExecutives from "../../organisms/table/componens/Stock_market/Key_Executives";
+import StockCP from "../../organisms/table/componens/Stock_market/Stock_Companies_Price";
+import SecFilings from "../../organisms/table/componens/Stock_market/SEC_Filings";
+import StockNews from "../../organisms/table/componens/Stock_market/Stock_News";
 
-const StockMarker: React.FC<IStockMarkerProps> = ({ variant }) => {
-  switch (variant) {
-    case "stock":
-      return (
-        <div>
-          <InputMolecule />
-          <TabsBar variant={"stock"} />
-        </div>
-      );
-    case "etf":
-      return (
-        <div>
-          <InputMolecule />
-          <TabsBar variant={"etf"} />
-        </div>
-      );
-
-    case "currency":
-      return (
-        <div>
-          <InputMolecule />
-          <TabsBar variant={"currency"} />
-        </div>
-      );
-    case "cryptocurrency":
-      return (
-        <div>
-          <InputMolecule />
-          <TabsBar variant={"cryptocurrency"} />
-        </div>
-      );
-  }
+const StockMarket = () => {
+  const [tiker, setTiker] = useState("");
+  return (
+    <>
+      <InputMolecule setTiker={setTiker}/>
+      <TabsBar variant={"stock"} />
+      <Switch>
+        <Route path={`/${routes.StockMarket}/${routes.FinancialIndicators}`}>
+          <CompanyFR tiker={tiker}/>
+        </Route>
+        <Route
+          path={`/${routes.StockMarket}/${routes.CompanyFinancialStatements}`}
+        >
+          <CompanyFS />
+        </Route>
+        <Route path={`/${routes.StockMarket}/${routes.CompanyProfile}`}>
+          <CompanyProfile />
+        </Route>
+        <Route path={`/${routes.StockMarket}/${routes.KeyExecutives}`}>
+          <KeyExecutives />
+        </Route>
+        <Route path={`/${routes.StockMarket}/${routes.SecFilings}`}>
+          <SecFilings />
+        </Route>
+        <Route path={`/${routes.StockMarket}/${routes.StockCompaniesPrice}`}>
+          <StockCP />
+        </Route>
+        <Route path={`/${routes.StockMarket}/${routes.StockNews}`}>
+          <StockNews />
+        </Route>
+      </Switch>
+    </>
+  );
 };
-export default StockMarker;
+
+export default StockMarket;

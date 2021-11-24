@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = () => {
+const StockNews = () => {
   return <div></div>;
 };
-export default Table;
+export default StockNews;

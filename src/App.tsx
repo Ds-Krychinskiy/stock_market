@@ -1,7 +1,9 @@
 import React from "react";
 import LinkBar from "./componens/organisms/nav-bar";
-import StockMarket from "./componens/templates/stock_market";
+import Templates from "./componens/templates";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import * as routes from "./routes";
 
 const App = () => {
   return (
@@ -9,17 +11,17 @@ const App = () => {
       <Router>
         <LinkBar />
         <Switch>
-          <Route path="/stock_marker">
-            <StockMarket variant={"stock"} />
+          <Route path={`/${routes.StockMarket}`}>
+            <Templates variant={"stock"} />
           </Route>
           <Route path="/etf">
-            <StockMarket variant={"etf"} />
+            <Templates variant={"etf"} />
           </Route>
           <Route path="/currency">
-            <StockMarket variant={"currency"} />
+            <Templates variant={"currency"} />
           </Route>
           <Route path="/cryptocurrency">
-            <StockMarket variant={"cryptocurrency"} />
+            <Templates variant={"cryptocurrency"} />
           </Route>
         </Switch>
       </Router>
