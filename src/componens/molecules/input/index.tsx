@@ -6,19 +6,18 @@ interface IInputProps {
   setTiker: (name: string) => void;
 }
 
-const InputMolecule: React.FC<IInputProps> = ({  setTiker }) => {
+const InputMolecule: React.FC<IInputProps> = ({ setTiker }) => {
   const [value, setValue] = useState("");
 
   const onClick = () => {
-  setTiker(value);
-  setValue("")
+    setTiker(value);
+    setValue("");
   };
-  
 
   return (
     <div>
-      <Input value={value} setValue={setValue}/>
-      <Button onClick={onClick}/>
+      <Input value={value} setValue={setValue} />
+      <Button onClick={onClick} />
     </div>
   );
 };

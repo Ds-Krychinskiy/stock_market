@@ -18,31 +18,31 @@ const StockMarket = () => {
   const [tiker, setTiker] = useState("");
   return (
     <>
-      <InputMolecule setTiker={setTiker}/>
+      <InputMolecule setTiker={setTiker} />
       <TabsBar variant={"stock"} />
       <Switch>
         <Route path={`/${routes.StockMarket}/${routes.FinancialIndicators}`}>
-          <CompanyFR tiker={tiker}/>
+          <CompanyFR tiker={tiker} />
         </Route>
         <Route
           path={`/${routes.StockMarket}/${routes.CompanyFinancialStatements}`}
         >
-          <CompanyFS />
+          <CompanyFS tiker={tiker} />
         </Route>
         <Route path={`/${routes.StockMarket}/${routes.CompanyProfile}`}>
-          <CompanyProfile />
+          <CompanyProfile tiker={tiker} />
         </Route>
         <Route path={`/${routes.StockMarket}/${routes.KeyExecutives}`}>
-          <KeyExecutives />
+          <KeyExecutives tiker={tiker} />
         </Route>
         <Route path={`/${routes.StockMarket}/${routes.SecFilings}`}>
-          <SecFilings />
+          <SecFilings tiker={tiker} />
         </Route>
         <Route path={`/${routes.StockMarket}/${routes.StockCompaniesPrice}`}>
-          <StockCP />
+          <StockCP tiker={tiker} />
         </Route>
         <Route path={`/${routes.StockMarket}/${routes.StockNews}`}>
-          <StockNews />
+          <StockNews tiker={tiker} />
         </Route>
       </Switch>
     </>

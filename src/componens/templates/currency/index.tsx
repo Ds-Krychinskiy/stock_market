@@ -6,7 +6,7 @@ const Currency = () => {
   const [tiker, setTiker] = useState("");
   return (
     <div>
-      <InputMolecule  setTiker={setTiker}/>
+      <InputMolecule setTiker={setTiker} />
       <TabsBar variant={"currency"} />
     </div>
   );

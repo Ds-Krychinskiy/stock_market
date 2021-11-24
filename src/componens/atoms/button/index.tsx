@@ -5,8 +5,7 @@ interface IButtonProps {
   onClick: () => void;
 }
 
-const Button: React.FC<IButtonProps> = ({onClick}) => {
-  
+const Button: React.FC<IButtonProps> = ({ onClick }) => {
   return <ButtonStyle onClick={() => onClick()}>Save</ButtonStyle>;
 };
 
