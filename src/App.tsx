@@ -4,6 +4,7 @@ import Templates from "./componens/templates";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import * as routes from "./routes";
+import StockScreener from "./componens/templates/stock_screener";
 
 const App = () => {
   return (
@@ -11,6 +12,9 @@ const App = () => {
       <Router>
         <LinkBar />
         <Switch>
+          <Route path={`/${routes.StockScreener}`}>
+            <StockScreener />
+          </Route>
           <Route path={`/${routes.StockMarket}`}>
             <Templates variant={"stock"} />
           </Route>
