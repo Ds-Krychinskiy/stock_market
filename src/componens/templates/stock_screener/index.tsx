@@ -7,6 +7,7 @@ const CreateState = {
   industry: "",
   country: "",
   exchange: "",
+  marketCap: "",
 };
 
 // CreateState.industry = "kek"

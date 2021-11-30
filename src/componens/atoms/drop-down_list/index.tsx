@@ -2,10 +2,10 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import React from "react";
-import { ISector, IListCountry } from "../../../list";
+import { ISector, IListCountry, IMarketCap } from "../../../list";
 
 interface IDropDownListProps {
-  list: ISector[] | IListCountry[];
+  list: ISector[] | IListCountry[] | IMarketCap[];
   name: string;
   id: string;
   state: string;

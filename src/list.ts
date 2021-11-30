@@ -7,6 +7,10 @@ export interface IListCountry {
   label: string;
   key: string;
 }
+export interface IMarketCap {
+  label: number;
+  key: number;
+}
 
 export const listSector: ISector[] = [
   {
@@ -321,5 +325,88 @@ export const listIndustry: ISector[] = [
   {
     label: "Beverages Non-Alcoholic",
     key: 7,
+  },
+];
+
+export const listMarketCap: IMarketCap[] = [
+  {
+    label: 1000000000000,
+    key: 1000000000000,
+  },
+  {
+    label: 500000000000,
+    key: 500000000000,
+  },
+  {
+    label: 250000000000,
+    key: 250000000000,
+  },
+  {
+    label: 100000000000,
+    key: 100000000000,
+  },
+  {
+    label: 50000000000,
+    key: 50000000000,
+  },
+  {
+    label: 25000000000,
+    key: 25000000000,
+  },
+  {
+    label: 10000000000,
+    key: 10000000000,
+  },
+  {
+    label: 1000000000,
+    key: 1000000000,
+  },
+  {
+    label: 500000000,
+    key: 500000000,
+  },
+  {
+    label: 250000000,
+    key: 250000000,
+  },
+  {
+    label: 100000000,
+    key: 100000000,
+  },
+  {
+    label: 75000000,
+    key: 75000000,
+  },
+  {
+    label: 50000000,
+    key: 50000000,
+  },
+  {
+    label: 25000000,
+    key: 25000000,
+  },
+  {
+    label: 1000000,
+    key: 1000000,
+  },
+  {
+    label: 750000,
+    key: 750000,
+  },
+  {
+    label: 500000,
+    key: 500000,
+  },
+  {
+    label: 250000,
+    key: 250000,
+  },
+  {
+    label: 100000,
+    key: 100000,
+  },
+  {
+    label: 75000,
+    key: 75000,
   },
 ];
