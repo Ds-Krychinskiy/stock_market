@@ -17,6 +17,7 @@ const DropDownList: React.FC<IDropDownListProps> = ({ ...props }) => {
 
   const handelChange = (e: SelectChangeEvent<string>) => {
     onChange(e.target.value);
+    console.log(state);
   };
 
   return (

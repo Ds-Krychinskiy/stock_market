@@ -1,6 +1,6 @@
 export interface ISector {
   label: string;
-  key: number;
+  key: string;
 }
 
 export interface IListCountry {
@@ -15,63 +15,63 @@ export interface IMarketCap {
 export const listSector: ISector[] = [
   {
     label: "Consumer Cyclical",
-    key: 1,
+    key: "Consumer Cyclical",
   },
   {
     label: "Energy",
-    key: 2,
+    key: "Energy",
   },
   {
     label: "Technology",
-    key: 3,
+    key: "Technology",
   },
   {
     label: "Industrials",
-    key: 4,
+    key: "Industrials",
   },
   {
     label: "Financial Services",
-    key: 5,
+    key: "Financial Services",
   },
   {
     label: "Basic Materials",
-    key: 6,
+    key: "Basic Materials",
   },
   {
     label: "Communication Services",
-    key: 7,
+    key: "Communication Services",
   },
   {
     label: "Consumer Defensive",
-    key: 8,
+    key: "Consumer Defensive",
   },
   {
     label: "Healthcare",
-    key: 9,
+    key: "Healthcare",
   },
   {
     label: "Real Estate",
-    key: 10,
+    key: "Real Estate",
   },
   {
     label: "Utilities",
-    key: 11,
+    key: "Utilities",
   },
   {
     label: "Industrial Goods",
-    key: 12,
+    key: "Industrial Goods",
   },
   {
     label: "Financial",
-    key: 13,
+    key: "Financial",
   },
   {
     label: "Services",
-    key: 14,
+    key: "Services",
   },
   {
     label: "Conglomerates",
-    key: 15,
+    key: "conglomerates",
   },
 ];
 
@@ -300,31 +300,31 @@ export const listExchange: IListCountry[] = [
 export const listIndustry: ISector[] = [
   {
     label: "Autos",
-    key: 1,
+    key: "Autos",
   },
   {
-    label: "Banks ",
-    key: 2,
+    label: "Banks",
+    key: "Banks",
   },
   {
     label: "Banks Diversified",
-    key: 3,
+    key: "Banks Diversified",
   },
   {
     label: "Banks Regional ",
-    key: 4,
+    key: "Banks Regional ",
   },
   {
     label: "Beverages Alcoholic",
-    key: 5,
+    key: "Beverages Alcoholic",
   },
   {
     label: "Beverages Brewers",
-    key: 6,
+    key: "Beverages Brewers",
   },
   {
     label: "Beverages Non-Alcoholic",
-    key: 7,
+    key: "Beverages Non-Alcoholic",
   },
 ];
 
@@ -408,5 +408,90 @@ export const listMarketCap: IMarketCap[] = [
   {
     label: 75000,
     key: 75000,
+  },
+];
+
+export const listDiv: IMarketCap[] = [
+  {
+    label: 0,
+    key: 0,
+  },
+  {
+    label: 1,
+    key: 1,
+  },
+  {
+    label: 2,
+    key: 2,
+  },
+  {
+    label: 3,
+    key: 3,
+  },
+  {
+    label: 4,
+    key: 4,
+  },
+  {
+    label: 5,
+    key: 5,
+  },
+  {
+    label: 6,
+    key: 6,
+  },
+  {
+    label: 7,
+    key: 7,
+  },
+  {
+    label: 8,
+    key: 8,
+  },
+  {
+    label: 9,
+    key: 9,
+  },
+  {
+    label: 10,
+    key: 10,
+  },
+];
+export const listTradingVolume = [
+  {
+    label: 10000,
+    key: 10000,
+  },
+  {
+    label: 100000,
+    key: 100000,
+  },
+  {
+    label: 1000000,
+    key: 1000000,
+  },
+  {
+    label: 5000000,
+    key: 5000000,
+  },
+  {
+    label: 10000000,
+    key: 10000000,
+  },
+  {
+    label: 25000000,
+    key: 25000000,
+  },
+  {
+    label: 50000000,
+    key: 50000000,
+  },
+  {
+    label: 75000000,
+    key: 75000000,
+  },
+  {
+    label: 100000000,
+    key: 100000000,
   },
 ];

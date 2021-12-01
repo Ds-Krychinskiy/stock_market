@@ -30,7 +30,7 @@ const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
           <p>Форма отчёта: {e.type}</p>
           <p>
             Ссылка на отчёт:{" "}
-            <a href={e.finalLink} target="_blank">
+            <a href={e.finalLink} target="blank">
               {e.finalLink}
             </a>
           </p>

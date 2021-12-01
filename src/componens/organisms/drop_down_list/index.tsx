@@ -5,6 +5,8 @@ import {
   listIndustry,
   listSector,
   listMarketCap,
+  listDiv,
+  listTradingVolume,
 } from "../../../list";
 import DropDownList from "../../atoms/drop-down_list";
 import { DropDownListsStyle } from "./style";
@@ -16,6 +18,8 @@ export interface IStateProps {
   country: string;
   exchange: string;
   marketCap: string;
+  tradingVolume: string;
+  dividend: string;
 }
 
 interface IDropDownListsProps {
@@ -24,7 +28,16 @@ interface IDropDownListsProps {
 }
 
 const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
-  const { sector, services, country, industry, exchange, marketCap } = state;
+  const {
+    sector,
+    services,
+    country,
+    industry,
+    exchange,
+    marketCap,
+    tradingVolume,
+    dividend,
+  } = state;
   return (
     <DropDownListsStyle>
       <DropDownList
@@ -66,7 +79,21 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
         state={marketCap}
         onChange={(value) => onChange(value, "marketCap")}
         list={listMarketCap}
-        name={"MarketCap"}
+        name={"Market Cap"}
+        id={"MarketCap-label"}
+      />
+      <DropDownList
+        state={dividend}
+        onChange={(value) => onChange(value, "marketCap")}
+        list={listDiv}
+        name={"Last Annual Dividend"}
+        id={"MarketCap-label"}
+      />
+      <DropDownList
+        state={tradingVolume}
+        onChange={(value) => onChange(value, "marketCap")}
+        list={listTradingVolume}
+        name={"Trading volume"}
         id={"MarketCap-label"}
       />
     </DropDownListsStyle>
