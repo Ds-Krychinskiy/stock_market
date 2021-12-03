@@ -1,18 +1,14 @@
-export interface ISector {
+export interface IStringList {
   label: string;
   key: string;
 }
 
-export interface IListCountry {
-  label: string;
-  key: string;
-}
-export interface IMarketCap {
+export interface INumberList {
   label: number;
   key: number;
 }
 
-export const listSector: ISector[] = [
+export const listSector: IStringList[] = [
   {
     label: "Consumer Cyclical",
     key: "Consumer Cyclical",
@@ -75,7 +71,7 @@ export const listSector: ISector[] = [
   },
 ];
 
-export const listCountry: IListCountry[] = [
+export const listCountry: IStringList[] = [
   {
     label: "United States",
     key: "US",
@@ -266,7 +262,7 @@ export const listCountry: IListCountry[] = [
   },
 ];
 
-export const listExchange: IListCountry[] = [
+export const listExchange: IStringList[] = [
   {
     label: "New York Stock Exchange",
     key: "nyse",
@@ -297,7 +293,7 @@ export const listExchange: IListCountry[] = [
   },
 ];
 
-export const listIndustry: ISector[] = [
+export const listIndustry: IStringList[] = [
   {
     label: "Autos",
     key: "Autos",
@@ -328,7 +324,7 @@ export const listIndustry: ISector[] = [
   },
 ];
 
-export const listMarketCap: IMarketCap[] = [
+export const listMarketCap: INumberList[] = [
   {
     label: 1000000000000,
     key: 1000000000000,
@@ -411,7 +407,7 @@ export const listMarketCap: IMarketCap[] = [
   },
 ];
 
-export const listDiv: IMarketCap[] = [
+export const listDiv: INumberList[] = [
   {
     label: 0,
     key: 0,
@@ -457,7 +453,8 @@ export const listDiv: IMarketCap[] = [
     key: 10,
   },
 ];
-export const listTradingVolume = [
+
+export const listTradingVolume: INumberList[] = [
   {
     label: 10000,
     key: 10000,
@@ -495,3 +492,34 @@ export const listTradingVolume = [
     key: 100000000,
   },
 ];
+
+export const listBeta: INumberList[] = [
+  {
+    label: 0,
+    key: 0, 
+  },
+  {
+    label: 1,
+    key: 1, 
+  },
+  {
+    label: 2,
+    key: 2, 
+  },
+  {
+    label: 3,
+    key: 3, 
+  },
+  {
+    label: 4,
+    key: 4, 
+  },
+  {
+    label: 5,
+    key: 5, 
+  },
+  {
+    label: 6,
+    key: 6, 
+  },
+]

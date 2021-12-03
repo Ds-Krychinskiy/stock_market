@@ -7,23 +7,25 @@ import {
   listMarketCap,
   listDiv,
   listTradingVolume,
+  listBeta,
 } from "../../../list";
 import DropDownList from "../../atoms/drop-down_list";
 import { DropDownListsStyle } from "./style";
 
-export interface IStateProps {
+interface IStateProps {
   sector: string;
   services: string;
   industry: string;
   country: string;
   exchange: string;
-  marketCap: string;
-  tradingVolume: string;
-  dividend: string;
+  marketCap: number;
+  tradingVolume: number;
+  dividend: number;
+  beta: number,
 }
 
 interface IDropDownListsProps {
-  onChange: (value: string, field: string) => void;
+  onChange: (value: string | number, field: string) => void;
   state: IStateProps;
 }
 
@@ -37,6 +39,7 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
     marketCap,
     tradingVolume,
     dividend,
+    beta
   } = state;
   return (
     <DropDownListsStyle>
@@ -84,17 +87,24 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
       />
       <DropDownList
         state={dividend}
-        onChange={(value) => onChange(value, "marketCap")}
+        onChange={(value) => onChange(value, "dividend")}
         list={listDiv}
         name={"Last Annual Dividend"}
         id={"MarketCap-label"}
       />
       <DropDownList
         state={tradingVolume}
-        onChange={(value) => onChange(value, "marketCap")}
+        onChange={(value) => onChange(value, "tradingVolume")}
         list={listTradingVolume}
         name={"Trading volume"}
-        id={"MarketCap-label"}
+        id={"TradingVolume-label"}
+      />
+      <DropDownList
+        state={beta}
+        onChange={(value) => onChange(value, "beta")}
+        list={listBeta}
+        name={"Volatility ratio"}
+        id={"Beta-label"}
       />
     </DropDownListsStyle>
   );

@@ -9,9 +9,10 @@ const CreateState = {
   industry: "",
   country: "",
   exchange: "",
-  marketCap: "",
-  dividend: "",
-  tradingVolume: "",
+  marketCap: 0,
+  dividend: 0,
+  tradingVolume: 0,
+  beta: 0,
 };
 
 interface IScreenerProps {
@@ -32,19 +33,19 @@ interface IScreenerProps {
 const StockScreener = () => {
   const [state, setState] = useState(CreateState);
   const [screener, setScreener] = useState<IScreenerProps[]>([]);
-  const onAdd = useCallback((value: string, field: string) => {
+  const onAdd = useCallback((value: string | number, field: string) => {
     setState((_state) => ({ ..._state, [field]: value }));
   }, []);
 
   const onClick = () => {
     axios
-      .get(`stock-screener?volumeMoreThan=125000000&`)
+      .get(`stock-screener?marketCapMoreThan=${state.marketCap}&betaMoreThan=1&volumeMoreThan=${state.tradingVolume}&sector=${state.sector}&industry=${state.industry}&exchange=${state.exchange}&dividendMoreThan=${state.dividend}&limit=100&
+      `)
       .then((response) => setScreener(response.data))
       .catch((error) => {
         console.log("Sorry, Bro");
       });
   };
-  // stock-screener?marketCapMoreThan=${state.marketCap}&sector=${state.sector}&industry=${state.industry}&exchange=${state.exchange}&dividendMoreThan=0&limit=100&
   return (
     <div>
       <DropDownLists state={state} onChange={onAdd} />
