@@ -9,6 +9,7 @@ import {
   listTradingVolume,
   listBeta,
 } from "../../../list";
+import Button from "../../atoms/button";
 import DropDownList from "../../atoms/drop-down_list";
 import { DropDownListsStyle } from "./style";
 
@@ -21,15 +22,20 @@ interface IStateProps {
   marketCap: number;
   tradingVolume: number;
   dividend: number;
-  beta: number,
+  beta: number;
 }
 
 interface IDropDownListsProps {
   onChange: (value: string | number, field: string) => void;
   state: IStateProps;
+  onClick: () => void;
 }
 
-const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
+const DropDownLists: React.FC<IDropDownListsProps> = ({
+  state,
+  onChange,
+  onClick,
+}) => {
   const {
     sector,
     services,
@@ -39,16 +45,16 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
     marketCap,
     tradingVolume,
     dividend,
-    beta
+    beta,
   } = state;
   return (
     <DropDownListsStyle>
       <DropDownList
-        state={sector}
-        onChange={(value) => onChange(value, "sector")}
-        list={listSector}
-        name={"Sector"}
-        id={"Sector-label"}
+        state={marketCap}
+        onChange={(value) => onChange(value, "marketCap")}
+        list={listMarketCap}
+        name={"Market Cap"}
+        id={"MarketCap-label"}
       />
       <DropDownList
         state={country}
@@ -65,6 +71,13 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
         id={"Exchange-label"}
       />
       <DropDownList
+        state={sector}
+        onChange={(value) => onChange(value, "sector")}
+        list={listSector}
+        name={"Sector"}
+        id={"Sector-label"}
+      />
+      <DropDownList
         state={industry}
         onChange={(value) => onChange(value, "industry")}
         list={listIndustry}
@@ -78,13 +91,7 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
         name={"Services"}
         id={"Services-label"}
       />
-      <DropDownList
-        state={marketCap}
-        onChange={(value) => onChange(value, "marketCap")}
-        list={listMarketCap}
-        name={"Market Cap"}
-        id={"MarketCap-label"}
-      />
+      
       <DropDownList
         state={dividend}
         onChange={(value) => onChange(value, "dividend")}
@@ -106,6 +113,7 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({ state, onChange }) => {
         name={"Volatility ratio"}
         id={"Beta-label"}
       />
+      <Button onClick={onClick} />
     </DropDownListsStyle>
   );
 };

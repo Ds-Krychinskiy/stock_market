@@ -18,13 +18,13 @@ const App = () => {
           <Route path={`/${routes.StockMarket}`}>
             <Templates variant={"stock"} />
           </Route>
-          <Route path="/etf">
+          <Route path={`/${routes.Etf}`}>
             <Templates variant={"etf"} />
           </Route>
-          <Route path="/currency">
+          <Route path={`/${routes.Currency}`}>
             <Templates variant={"currency"} />
           </Route>
-          <Route path="/cryptocurrency">
+          <Route path={`/${routes.Cryptocurrency}`}>
             <Templates variant={"cryptocurrency"} />
           </Route>
         </Switch>

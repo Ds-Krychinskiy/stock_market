@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import axios from "../../../axios";
 import Button from "../../atoms/button";
 import DropDownLists from "../../organisms/drop_down_list";
+import StockScreenerTable from "../../organisms/table/componens/Stock_Screener";
 
 const CreateState = {
   sector: "",
@@ -15,7 +16,7 @@ const CreateState = {
   beta: 0,
 };
 
-interface IScreenerProps {
+export interface IScreenerProps {
   symbol: string;
   companyName: string;
   marketCap: number;
@@ -26,6 +27,7 @@ interface IScreenerProps {
   volume: number;
   exchange: string;
   exchangeShortName: string;
+  country: string;
 }
 // CreateState.industry = "kek"
 // CreateState["industry"] = "kek"
@@ -39,29 +41,20 @@ const StockScreener = () => {
 
   const onClick = () => {
     axios
-      .get(`stock-screener?marketCapMoreThan=${state.marketCap}&betaMoreThan=1&volumeMoreThan=${state.tradingVolume}&sector=${state.sector}&industry=${state.industry}&exchange=${state.exchange}&dividendMoreThan=${state.dividend}&limit=100&
-      `)
+      .get(
+        `stock-screener?marketCapMoreThan=${state.marketCap}&betaMoreThan=1&volumeMoreThan=${state.tradingVolume}&sector=${state.sector}&industry=${state.industry}&exchange=${state.exchange}&dividendMoreThan=${state.dividend}&limit=100&
+      `
+      )
       .then((response) => setScreener(response.data))
       .catch((error) => {
         console.log("Sorry, Bro");
       });
   };
+
   return (
     <div>
-      <DropDownLists state={state} onChange={onAdd} />
-      <Button onClick={onClick} />
-      {screener.map((el) => (
-        <div>
-          <p>{el.companyName}</p>
-          <p>{el.symbol}</p>
-          <p>{el.marketCap}</p>
-          <p>{el.price}</p>
-          <p>{el.beta}</p>
-          <p>{el.exchangeShortName}</p>
-          <p>{el.sector}</p>
-          <p>дивиденды {el.lastAnnualDividend}</p>
-        </div>
-      ))}
+      <DropDownLists state={state} onChange={onAdd} onClick={onClick} />
+      <StockScreenerTable screener={screener} />
     </div>
   );
 };

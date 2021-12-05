@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "../../../../../../axios";
+import React, { useState } from "react";
+import { TypographyStyle } from "../../../../atoms/typography/style";
+import { IScreenerProps } from "../../../../templates/stock_screener";
+import { TableScreener, TableWrapper, Wrapper } from "./style";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,26 +10,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
-import { TypographyStyle } from "../../../../../atoms/typography/style";
-import {
-  TableWrapper,
-  Wrapper,
-} from "../../Stock_Screener/style";
-import { SecFilingsStyle } from "./style";
 
-interface ISecFilings {
-  symbol: string;
-  acceptedDate: string;
-  type: string;
-  finalLink: string;
+interface IScreenerTablProps {
+  screener: IScreenerProps[];
 }
 
-interface ISecFilingsProps {
-  tiker: string;
-}
-
-const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
-  const [filings, setFilings] = useState<ISecFilings[]>([]);
+const StockScreenerTable: React.FC<IScreenerTablProps> = ({ screener }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -42,18 +30,9 @@ const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
     setPage(0);
   };
 
-  useEffect(() => {
-    axios
-      .get(`sec_filings/${tiker}?limit=100`)
-      .then((response) => setFilings(response.data))
-      .catch((error) => {
-        console.log("Sorry, Bro");
-      });
-  }, [tiker]);
-
   return (
     <>
-      {filings[0] ? (
+      {screener[0] ? (
         <>
           <TableWrapper>
             <Paper sx={{ width: "100%", height: "100%", overflow: "hidden" }}>
@@ -69,7 +48,7 @@ const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
                     </TableHead>
                     <TableBody>
                       <Wrapper>
-                        {filings
+                        {screener
                           .slice(
                             page * rowsPerPage,
                             page * rowsPerPage + rowsPerPage
@@ -77,20 +56,27 @@ const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
                           .map((el) => (
                             <TableRow hover role="checkbox" tabIndex={-1}>
                               <TableCell key={el.symbol}>
-                                <SecFilingsStyle>
+                                <TableScreener>
                                   <TypographyStyle>
-                                    Дата публикации отчёта: {el.acceptedDate}
+                                    {el.companyName}
+                                  </TypographyStyle>
+                                  <TypographyStyle>{el.symbol}</TypographyStyle>
+                                  <TypographyStyle>
+                                    {el.marketCap}
+                                  </TypographyStyle>
+                                  <TypographyStyle>{el.price}</TypographyStyle>
+                                  <TypographyStyle>{el.beta}</TypographyStyle>
+                                  <TypographyStyle>
+                                    {el.exchangeShortName}
+                                  </TypographyStyle>
+                                  <TypographyStyle>{el.sector}</TypographyStyle>
+                                  <TypographyStyle>
+                                    дивиденды {el.lastAnnualDividend}
                                   </TypographyStyle>
                                   <TypographyStyle>
-                                    Форма отчёта: {el.type}
+                                    страна: {el.country}
                                   </TypographyStyle>
-                                  <TypographyStyle>
-                                    Ссылка на отчёт:
-                                    <a href={el.finalLink} target="blank">
-                                      {el.finalLink}
-                                    </a>
-                                  </TypographyStyle>
-                                </SecFilingsStyle>
+                                </TableScreener>
                               </TableCell>
                             </TableRow>
                           ))}
@@ -102,7 +88,7 @@ const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
               <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
-                count={filings.length}
+                count={screener.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
@@ -115,4 +101,5 @@ const SecFilings: React.FC<ISecFilingsProps> = ({ tiker }) => {
     </>
   );
 };
-export default SecFilings;
+
+export default StockScreenerTable;

@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../../../axios";
+
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import TableHead from "@mui/material/TableHead";
+import { TableWrapper, Wrapper } from "../../Stock_Screener/style";
+import { TypographyStyle } from "../../../../../atoms/typography/style";
+
 interface IFinancialRatios {
   date: string;
   symbol: string;
@@ -38,6 +50,19 @@ interface ICompanyFS {
 }
 const CompanyFS: React.FC<ICompanyFS> = ({ tiker }) => {
   const [finance, setFinance] = useState<IFinancialRatios[]>([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   useEffect(() => {
     axios
@@ -49,45 +74,128 @@ const CompanyFS: React.FC<ICompanyFS> = ({ tiker }) => {
   }, [tiker]);
 
   return (
-    <div>
-      {finance.map((e) => (
+    <>
+      {finance[0] ? (
         <>
-          <p>Дата публикации отчёта: {e.date}</p>
-          <p>Валюта отчётности: {e.reportedCurrency}</p>
-          <p>Отчётный период: {e.period}</p>
-          <p>Доход: {e.revenue}</p>
-          <p>Валовой доход: {e.grossProfit}</p>
-          <p>Коэффициент валовой прибыли: {e.grossProfitRatio} </p>
-          <p>
-            Расходы на исследование и разработки:{" "}
-            {e.researchAndDevelopmentExpenses}
-          </p>
-          <p>
-            Общие и административные расходы:{" "}
-            {e.generalAndAdministrativeExpenses}
-          </p>
-          <p>Расходы на продажу: {e.sellingAndMarketingExpenses}</p>
-          <p>Опарационные расходы: {e.operatingExpenses}</p>
-          <p>износ и амортизация: {e.depreciationAndAmortization}</p>
-          <p>Прочие расходы: {e.otherExpenses}</p>
-          <p>Ebitda: {e.ebitda}</p>
-          <p>Операционная прибыль: {e.operatingIncome}</p>
-          <p>Операционная маржа: {e.operatingIncomeRatio}</p>
-          <p>прочие доходы: {e.totalOtherIncomeExpensesNet}</p>
-          <p>Доход до налогообложения: {e.incomeBeforeTax}</p>
-          <p>Расходы по налогу на прибыль: {e.incomeTaxExpense}</p>
-          <p>Чистая прибыль: {e.netIncome}</p>
-          <p>Коэффициент чистой прибыли: {e.netIncomeRatio}</p>
-          <p>Прибыль на акцию: {e.eps}</p>
-          <p>
-            Ссылка на отчёт:{" "}
-            <a href={e.finalLink} target="blank">
-              {e.finalLink}
-            </a>
-          </p>
+          <TableWrapper>
+            <Paper sx={{ width: "100%", height: "100%", overflow: "hidden" }}>
+              <TableContainer>
+                <TableWrapper>
+                  <Table stickyHeader aria-label="sticky table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell sx={{ justifyContent: "space-between" }}>
+                          <TypographyStyle>Результат поиска</TypographyStyle>
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <Wrapper>
+                        {finance
+                          .slice(
+                            page * rowsPerPage,
+                            page * rowsPerPage + rowsPerPage
+                          )
+                          .map((e) => (
+                            <TableRow hover role="checkbox" tabIndex={-1}>
+                              <TableCell key={e.symbol}>
+                                <TypographyStyle>
+                                  Дата публикации отчёта: {e.date}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Валюта отчётности: {e.reportedCurrency}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Отчётный период: {e.period}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Доход: {e.revenue}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Валовой доход: {e.grossProfit}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Коэффициент валовой прибыли:{" "}
+                                  {e.grossProfitRatio}{" "}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Расходы на исследование и разработки:
+                                  {e.researchAndDevelopmentExpenses}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Общие и административные расходы:{" "}
+                                  {e.generalAndAdministrativeExpenses}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Расходы на продажу:{" "}
+                                  {e.sellingAndMarketingExpenses}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Опарационные расходы: {e.operatingExpenses}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  износ и амортизация:{" "}
+                                  {e.depreciationAndAmortization}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Прочие расходы: {e.otherExpenses}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Ebitda: {e.ebitda}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Операционная прибыль: {e.operatingIncome}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Операционная маржа: {e.operatingIncomeRatio}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  прочие доходы: {e.totalOtherIncomeExpensesNet}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Доход до налогообложения: {e.incomeBeforeTax}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Расходы по налогу на прибыль:{" "}
+                                  {e.incomeTaxExpense}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Чистая прибыль: {e.netIncome}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Коэффициент чистой прибыли: {e.netIncomeRatio}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Прибыль на акцию: {e.eps}
+                                </TypographyStyle>
+                                <TypographyStyle>
+                                  Ссылка на отчёт:{" "}
+                                  <a href={e.finalLink} target="blank">
+                                    {e.finalLink}
+                                  </a>
+                                </TypographyStyle>
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                      </Wrapper>
+                    </TableBody>
+                  </Table>
+                </TableWrapper>
+              </TableContainer>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, 100]}
+                component="div"
+                count={finance.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </Paper>
+          </TableWrapper>
         </>
-      ))}
-    </div>
+      ) : null}
+    </>
   );
 };
 export default CompanyFS;

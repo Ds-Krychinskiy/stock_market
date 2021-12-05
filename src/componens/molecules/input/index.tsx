@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../../atoms/button";
 import Input from "../../atoms/input";
+import { InputMoleculeStyle } from "./style";
 
 interface IInputProps {
   setTiker: (name: string) => void;
@@ -15,10 +16,10 @@ const InputMolecule: React.FC<IInputProps> = ({ setTiker }) => {
   };
 
   return (
-    <div>
+    <InputMoleculeStyle>
       <Input value={value} setValue={setValue} />
       <Button onClick={onClick} />
-    </div>
+    </InputMoleculeStyle>
   );
 };
 

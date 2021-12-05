@@ -2,7 +2,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import React from "react";
-import { IStringList, INumberList} from "../../../list";
+import { IStringList, INumberList } from "../../../list";
 
 interface IDropDownListProps {
   list: IStringList[] | INumberList[];
