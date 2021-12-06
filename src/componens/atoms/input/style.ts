@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const InputStyle = styled.input`
   width: 500px;
   height: 50px;
-  border: 1px solid;
+  border: 2px solid #f26b38;
   border-radius: 15px;
+  padding-left: 15px;
+  ::placeholder{
+    color: #f26b38;
+  }
 `;

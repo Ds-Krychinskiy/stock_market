@@ -51,8 +51,9 @@ const StockMarket: React.FC<IStockMarketProps> = () => {
 
   return (
     <TabsBarStyle>
-      <Tabs value={selectedTab} aria-label="simple tabs example">
+      <Tabs sx={{color: "#f26b38"}} value={selectedTab} aria-label="simple tabs example">
         <TabsComponent
+
           value={FinancialIndicators}
           onClick={() => goToTheCompanyFR()}
           label={"Company Financial Ratios"}

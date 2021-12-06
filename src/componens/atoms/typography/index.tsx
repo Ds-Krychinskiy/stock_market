@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { TypographyStyle } from "./style";
 
 interface ITypographyProps {
-  children: string;
+  children: ReactNode;
 }
 
 const Typography: React.FC<ITypographyProps> = ({ children }) => {

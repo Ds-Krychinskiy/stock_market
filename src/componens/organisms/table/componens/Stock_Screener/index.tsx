@@ -35,7 +35,7 @@ const StockScreenerTable: React.FC<IScreenerTablProps> = ({ screener }) => {
       {screener[0] ? (
         <>
           <TableWrapper>
-            <Paper sx={{ width: "100%", height: "100%", overflow: "hidden" }}>
+            <Paper sx={{ width: "100%", height: "100%", overflow: "hidden", color: "#f26b38"}}>
               <TableContainer>
                 <TableWrapper>
                   <Table stickyHeader aria-label="sticky table">
@@ -86,6 +86,7 @@ const StockScreenerTable: React.FC<IScreenerTablProps> = ({ screener }) => {
                 </TableWrapper>
               </TableContainer>
               <TablePagination
+                sx={{color: "#f26b38"}}
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
                 count={screener.length}

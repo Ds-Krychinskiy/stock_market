@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../../../axios";
+import Typography from "../../../../../atoms/typography";
 
 interface ITSStocks {
   peRatioTTM: number;
@@ -68,65 +69,65 @@ const CompanyFR: React.FC<ICompanyFRProps> = ({ tiker }) => {
     <div>
       {stocks.map((e) => (
         <>
-          <p>P/E: {e.peRatioTTM}</p>
-          <p>PEG: {e.pegRatioTTM}</p>
-          <p>Коэффициент выплат: {e.payoutRatioTTM}</p>
-          <p>Коэффициент текущей ликвидности: {e.currentRatioTTM}</p>
-          <p>Дивидендная доходность: {e.dividendYielTTM}</p>
-          <p>Коэффициент выплат: {e.payoutRatioTTM}</p>
-          <p>Оборачиваемость оборотного капитала: {e.operatingCycleTTM}</p>
-          <p>Количество дней до конца продаж: {e.daysOfSalesOutstandingTTM}</p>
-          <p>Оборачиваемость оборотного капитала: {e.operatingCycleTTM}</p>
-          <p>Количество дней к оплате: {e.daysOfPayablesOutstandingTTM}</p>
-          <p>Цикл конвертации наличных денег: {e.cashConversionCycleTTM}</p>
-          <p>Валовая прибыль: {e.grossProfitMarginTTM}</p>
-          <p>Маржа опарационнаой прибыли: {e.operatingProfitMarginTTM}</p>
-          <p>Маржа прибыли до налогообложения: {e.pretaxProfitMarginTTM}</p>
-          <p>Маржа чистой прибыли: {e.netProfitMarginTTM}</p>
-          <p>Эффективная нологовая ставка: {e.effectiveTaxRateTTM}</p>
-          <p>ROA: {e.returnOnAssetsTTM}</p>
-          <p>ROE: {e.returnOnEquityTTM}</p>
-          <p>Доход на вложенный капитал: {e.returnOnCapitalEmployedTTM}</p>
-          <p>EBIT/EV: {e.ebtPerEbitTTM}</p>
-          <p>D/E: {e.debtRatioTTM}</p>
-          <p>
+          <Typography>P/E: {e.peRatioTTM}</Typography>
+          <Typography>PEG: {e.pegRatioTTM}</Typography>
+          <Typography>Коэффициент выплат: {e.payoutRatioTTM}</Typography>
+          <Typography>Коэффициент текущей ликвидности: {e.currentRatioTTM}</Typography>
+          <Typography>Дивидендная доходность: {e.dividendYielTTM}</Typography>
+          <Typography>Коэффициент выплат: {e.payoutRatioTTM}</Typography>
+          <Typography>Оборачиваемость оборотного капитала: {e.operatingCycleTTM}</Typography>
+          <Typography>Количество дней до конца продаж: {e.daysOfSalesOutstandingTTM}</Typography>
+          <Typography>Оборачиваемость оборотного капитала: {e.operatingCycleTTM}</Typography>
+          <Typography>Количество дней к оплате: {e.daysOfPayablesOutstandingTTM}</Typography>
+          <Typography>Цикл конвертации наличных денег: {e.cashConversionCycleTTM}</Typography>
+          <Typography>Валовая прибыль: {e.grossProfitMarginTTM}</Typography>
+          <Typography>Маржа опарационнаой прибыли: {e.operatingProfitMarginTTM}</Typography>
+          <Typography>Маржа прибыли до налогообложения: {e.pretaxProfitMarginTTM}</Typography>
+          <Typography>Маржа чистой прибыли: {e.netProfitMarginTTM}</Typography>
+          <Typography>Эффективная нологовая ставка: {e.effectiveTaxRateTTM}</Typography>
+          <Typography>ROA: {e.returnOnAssetsTTM}</Typography>
+          <Typography>ROE: {e.returnOnEquityTTM}</Typography>
+          <Typography>Доход на вложенный капитал: {e.returnOnCapitalEmployedTTM}</Typography>
+          <Typography>EBIT/EV: {e.ebtPerEbitTTM}</Typography>
+          <Typography>D/E: {e.debtRatioTTM}</Typography>
+          <Typography>
             Отношение долгосрочной задолженности к капитализации:{" "}
             {e.longTermDebtToCapitalizationTTM}
-          </p>
-          <p>Коэффициент покрытия процентов: {e.interestCoverageTTM}</p>
-          <p>Отношение денежного потока к долгу: {e.cashFlowToDebtRatioTTM}</p>
-          <p>
+          </Typography>
+          <Typography>Коэффициент покрытия процентов: {e.interestCoverageTTM}</Typography>
+          <Typography>Отношение денежного потока к долгу: {e.cashFlowToDebtRatioTTM}</Typography>
+          <Typography>
             Мультипликатор собственного капитала: {e.companyEquityMultiplierTTM}
-          </p>
-          <p>
+          </Typography>
+          <Typography>
             Коэффициент оборачиваемости дебиторской задолжнности:{" "}
             {e.receivablesTurnoverTTM}
-          </p>
-          <p>Коэффициент оборачиваемости запасов: {e.inventoryTurnoverTTM}</p>
-          <p>
+          </Typography>
+          <Typography>Коэффициент оборачиваемости запасов: {e.inventoryTurnoverTTM}</Typography>
+          <Typography>
             Оборот активов в ходе хозяйственной деятельности:{" "}
             {e.fixedAssetTurnoverTTM}
-          </p>
-          <p>
+          </Typography>
+          <Typography>
             Операционный денежный поток на акцию:{" "}
             {e.operatingCashFlowPerShareTTM}
-          </p>
-          <p>Свободный денежный поток на акцию: {e.freeCashFlowPerShareTTM}</p>
-          <p>Денежный поток на акцию: {e.cashPerShareTTM}</p>
-          <p>
+          </Typography>
+          <Typography>Свободный денежный поток на акцию: {e.freeCashFlowPerShareTTM}</Typography>
+          <Typography>Денежный поток на акцию: {e.cashPerShareTTM}</Typography>
+          <Typography>
             Операционный денежный поток / коэффициент продаж:{" "}
             {e.operatingCashFlowSalesRatioTTM}
-          </p>
-          <p>P/OCF: {e.freeCashFlowOperatingCashFlowRatioTTM}</p>
-          <p>
+          </Typography>
+          <Typography>P/OCF: {e.freeCashFlowOperatingCashFlowRatioTTM}</Typography>
+          <Typography>
             Отношение денежного потока к долгу: {e.cashFlowCoverageRatiosTTM}
-          </p>
-          <p>P/B: {e.priceBookValueRatioTTM}</p>
-          <p>P/S: {e.priceToSalesRatioTTM}</p>
-          <p>P/FCF: {e.priceToFreeCashFlowsRatioTTM}</p>
-          <p>Дивидендная доходность: {e.dividendYieldTTM}</p>
-          <p>Справедливая стоимость: {e.priceFairValueTTM}</p>
-          <p>DPS: {e.dividendPerShareTTM}</p>
+          </Typography>
+          <Typography>P/B: {e.priceBookValueRatioTTM}</Typography>
+          <Typography>P/S: {e.priceToSalesRatioTTM}</Typography>
+          <Typography>P/FCF: {e.priceToFreeCashFlowsRatioTTM}</Typography>
+          <Typography>Дивидендная доходность: {e.dividendYieldTTM}</Typography>
+          <Typography>Справедливая стоимость: {e.priceFairValueTTM}</Typography>
+          <Typography>DPS: {e.dividendPerShareTTM}</Typography>
         </>
       ))}
     </div>

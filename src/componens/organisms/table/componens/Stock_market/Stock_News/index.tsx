@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../../../axios";
+import Typography from "../../../../../atoms/typography";
 
 interface IStockNews {
   symbol: string;
@@ -28,9 +29,9 @@ const StockNews: React.FC<IStockNewsProps> = ({ tiker }) => {
     <div>
       {news.map((e) => (
         <>
-          <p>Дата публикации: {e.publishedDate}</p>
-          <p>{e.title}</p>
-          <p>{e.text}</p>
+          <Typography>Дата публикации: {e.publishedDate}</Typography>
+          <Typography>{e.title}</Typography>
+          <Typography>{e.text}</Typography>
           <a href={e.url}>{e.url}</a>
         </>
       ))}

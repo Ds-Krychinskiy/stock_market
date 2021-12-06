@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../../../axios";
+import Typography from "../../../../../atoms/typography";
 interface IStockCP {
   symbol: string;
   name: string;
@@ -44,12 +45,12 @@ const CompanyProfile: React.FC<IStockCPProps> = ({ tiker }) => {
     <div>
       {price.map((el) => (
         <>
-          <p>Цена одной акции: {el.price}</p>
-          <p>Цена на открытие торгов: {el.open}</p>
-          <p>Минимальная цена за день: {el.dayLow}</p>
-          <p>Максимльная цена за день: {el.dayHigh}</p>
-          <p>Минимальная цена за год: {el.yearLow}</p>
-          <p>Максимльная цена за год: {el.yearHigh}</p>
+          <Typography>Цена одной акции: {el.price}</Typography>
+          <Typography>Цена на открытие торгов: {el.open}</Typography>
+          <Typography>Минимальная цена за день: {el.dayLow}</Typography>
+          <Typography>Максимльная цена за день: {el.dayHigh}</Typography>
+          <Typography>Минимальная цена за год: {el.yearLow}</Typography>
+          <Typography>Максимльная цена за год: {el.yearHigh}</Typography>
         </>
       ))}
     </div>

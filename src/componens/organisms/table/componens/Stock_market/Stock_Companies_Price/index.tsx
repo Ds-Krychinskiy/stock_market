@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../../../axios";
+import Typography from "../../../../../atoms/typography";
 
 interface ICompanyPR {
   symbol: string;
@@ -33,21 +34,21 @@ const StockCP: React.FC<ICompanyPRProps> = ({ tiker }) => {
     <div>
       {profils.map((el) => (
         <>
-          <p>Цена одной акции: {el.price}</p>
-          <p>Сектор работы компании: {el.sector}</p>
-          <p>Штат: {el.state}</p>
-          <p>Город: {el.city}</p>
-          <p>CEO: {el.ceo}</p>
-          <p>Описание: {el.description}</p>
-          <p>
+          <Typography>Цена одной акции: {el.price}</Typography>
+          <Typography>Сектор работы компании: {el.sector}</Typography>
+          <Typography>Штат: {el.state}</Typography>
+          <Typography>Город: {el.city}</Typography>
+          <Typography>CEO: {el.ceo}</Typography>
+          <Typography>Описание: {el.description}</Typography>
+          <Typography>
             Cайт:
             <a href={el.website}>{el.website}</a>
-          </p>
-          <p>
+          </Typography>
+          <Typography>
             Биржа, на которой торгуются ценные бумаги компании:
             {el.exchange}
-          </p>
-          <p>Дата публичного размещения компании: {el.ipoDate}</p>
+          </Typography>
+          <Typography>Дата публичного размещения компании: {el.ipoDate}</Typography>
         </>
       ))}
     </div>

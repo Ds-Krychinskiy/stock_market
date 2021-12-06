@@ -37,7 +37,7 @@ const Etf = () => {
 
   return (
     <TabsBarStyle>
-      <Tabs value={selectedTab} aria-label="simple tabs example">
+      <Tabs sx={{color: "#f26b38"}} value={selectedTab} aria-label="simple tabs example">
         <TabsComponent
           value={ListETF}
           onClick={() => goToTheListETF()}

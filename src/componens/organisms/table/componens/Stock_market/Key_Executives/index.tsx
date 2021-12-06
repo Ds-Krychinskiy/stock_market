@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../../../axios";
+import Typography from "../../../../../atoms/typography";
 
 interface IKeyExecutivesProps {
   tiker: string;
@@ -31,11 +32,11 @@ const KeyExecutives: React.FC<IKeyExecutivesProps> = ({ tiker }) => {
     <div>
       {executives.map((e) => (
         <>
-          <p>Должность: {e.title}</p>
-          <p>Имя: {e.name}</p>
-          <p>Пол: {e.gender}</p>
-          <p>Год рождения: {e.yearBorn}</p>
-          <p>Дата вступление в должность: {e.titleSince}</p>
+          <Typography>Должность: {e.title}</Typography>
+          <Typography>Имя: {e.name}</Typography>
+          <Typography>Пол: {e.gender}</Typography>
+          <Typography>Год рождения: {e.yearBorn}</Typography>
+          <Typography>Дата вступление в должность: {e.titleSince}</Typography>
         </>
       ))}
     </div>

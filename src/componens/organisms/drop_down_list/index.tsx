@@ -11,6 +11,7 @@ import {
 } from "../../../list";
 import Button from "../../atoms/button";
 import DropDownList from "../../atoms/drop-down_list";
+import Typography from "../../atoms/typography";
 import { DropDownListsStyle } from "./style";
 
 interface IStateProps {
@@ -113,7 +114,7 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({
         name={"Volatility ratio"}
         id={"Beta-label"}
       />
-      <Button onClick={onClick} />
+      <Button onClick={onClick}><Typography>Save</Typography></Button>
     </DropDownListsStyle>
   );
 };

@@ -10,7 +10,8 @@ interface ILinkProps {
 const Links: React.FC<ILinkProps> = ({ children, way }) => {
   return (
     <LinkStyle>
-      <Link to={way}>
+  
+      <Link to={way} style={{ textDecoration: 'none' }}>
         <Typography>{children}</Typography>
       </Link>
     </LinkStyle>
