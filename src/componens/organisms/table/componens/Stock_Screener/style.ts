@@ -9,6 +9,10 @@ export const TableScreener = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   padding: 10px;
+  :hover{
+    box-shadow: 0px 0px 10px 3px #f26b38;
+  }
+  
 `;
 
 export const TableWrapper = styled.div`
