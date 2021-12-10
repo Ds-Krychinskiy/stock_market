@@ -25,7 +25,11 @@ const Currency = () => {
 
   return (
     <TabsBarStyle>
-      <Tabs sx={{color: "#f26b38"}} value={selectedTab} aria-label="simple tabs example">
+      <Tabs
+        sx={{ color: "#f26b38" }}
+        value={selectedTab}
+        aria-label="simple tabs example"
+      >
         <TabsComponent
           value={CurrentValue}
           onClick={() => goToTheListETF()}

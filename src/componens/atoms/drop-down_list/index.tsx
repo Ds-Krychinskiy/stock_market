@@ -20,16 +20,27 @@ const DropDownList: React.FC<IDropDownListProps> = ({ ...props }) => {
     onChange(e.target.value);
     console.log(state);
   };
- 
+
   return (
     <DropDownListWrapper>
-      <InputLabel sx={{color: "#f26b38"}} id={id}>{name}</InputLabel>
-      <Select sx={{color: "#f26b38", border: "1px solid #f26b38"}} labelId={id} value={state} onChange={handelChange}>
-        <MenuItem sx={{color: "#f26b38"}}>
+      <InputLabel sx={{ color: "#f26b38" }} id={id}>
+        {name}
+      </InputLabel>
+      <Select
+        sx={{ color: "#f26b38", border: "1px solid #f26b38" }}
+        labelId={id}
+        value={state}
+        onChange={handelChange}
+      >
+        <MenuItem sx={{ color: "#f26b38" }}>
           <em></em>
         </MenuItem>
         {list.map((el) => (
-          <MenuItem sx={{color: "#f26b38", backgroundColor: "black"}} key={el.key} value={el.key}>
+          <MenuItem
+            sx={{ color: "#f26b38", backgroundColor: "black" }}
+            key={el.key}
+            value={el.key}
+          >
             {el.label}
           </MenuItem>
         ))}

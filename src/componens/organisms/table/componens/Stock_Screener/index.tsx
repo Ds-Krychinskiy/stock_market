@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { TypographyStyle } from "../../../../atoms/typography/style";
 import { IScreenerProps } from "../../../../templates/stock_screener";
-import { TableScreener, TableWrapper, Wrapper } from "./style";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -10,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
+import { TableScreener, TableWrapper, Wrapper } from "../../style";
 
 interface IScreenerTablProps {
   screener: IScreenerProps[];
@@ -35,18 +35,33 @@ const StockScreenerTable: React.FC<IScreenerTablProps> = ({ screener }) => {
       {screener[0] ? (
         <>
           <TableWrapper>
-            <Paper  sx={{ width: "100%", height: "100%", overflow: "hidden", color: "#f26b38", backgroundColor: "black"}}>
+            <Paper
+              sx={{
+                width: "100%",
+                height: "100%",
+                overflow: "hidden",
+                color: "#f26b38",
+                backgroundColor: "black",
+              }}
+            >
               <TableContainer>
                 <TableWrapper>
                   <Table stickyHeader aria-label="sticky table">
-                    <TableHead >
-                      <TableRow >
-                        <TableCell  sx={{ backgroundColor: "black", display: "flex", justifyContent: "center", border: "3px solid #f26b38" }}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell
+                          sx={{
+                            backgroundColor: "black",
+                            display: "flex",
+                            justifyContent: "center",
+                            border: "3px solid #f26b38",
+                          }}
+                        >
                           <TypographyStyle>Результат поиска</TypographyStyle>
                         </TableCell>
                       </TableRow>
                     </TableHead>
-                    <TableBody >
+                    <TableBody>
                       <Wrapper>
                         {screener
                           .slice(
@@ -55,7 +70,10 @@ const StockScreenerTable: React.FC<IScreenerTablProps> = ({ screener }) => {
                           )
                           .map((el) => (
                             <TableRow hover role="checkbox" tabIndex={-1}>
-                              <TableCell key={el.symbol} sx={{border: "none"}}>
+                              <TableCell
+                                key={el.symbol}
+                                sx={{ border: "none" }}
+                              >
                                 <TableScreener>
                                   <TypographyStyle>
                                     {el.companyName}
@@ -86,7 +104,7 @@ const StockScreenerTable: React.FC<IScreenerTablProps> = ({ screener }) => {
                 </TableWrapper>
               </TableContainer>
               <TablePagination
-                sx={{color: "#f26b38", border: "1px solid #f26b38"}}
+                sx={{ color: "#f26b38", border: "1px solid #f26b38" }}
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
                 count={screener.length}

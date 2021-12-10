@@ -17,11 +17,13 @@ const InputMolecule: React.FC<IInputProps> = ({ setTiker }) => {
   };
 
   return (
-<InputWrapper>
-    <InputMoleculeStyle>
-      <Input value={value} setValue={setValue} />
-      <Button onClick={onClick}><Typography>Save</Typography></Button>
-    </InputMoleculeStyle>
+    <InputWrapper>
+      <InputMoleculeStyle>
+        <Input value={value} setValue={setValue} />
+        <Button onClick={onClick}>
+          <Typography>Save</Typography>
+        </Button>
+      </InputMoleculeStyle>
     </InputWrapper>
   );
 };

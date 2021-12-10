@@ -92,7 +92,7 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({
         name={"Services"}
         id={"Services-label"}
       />
-      
+
       <DropDownList
         state={dividend}
         onChange={(value) => onChange(value, "dividend")}
@@ -114,7 +114,9 @@ const DropDownLists: React.FC<IDropDownListsProps> = ({
         name={"Volatility ratio"}
         id={"Beta-label"}
       />
-      <Button onClick={onClick}><Typography>Save</Typography></Button>
+      <Button onClick={onClick}>
+        <Typography>Save</Typography>
+      </Button>
     </DropDownListsStyle>
   );
 };

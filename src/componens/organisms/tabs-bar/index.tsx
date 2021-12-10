@@ -1,4 +1,5 @@
 import React from "react";
+import CryptoCurrency from "./componens/CryptoCurrency";
 import Currency from "./componens/Currency";
 import Etf from "./componens/Etf";
 import StockMarket from "./componens/Stock_Market";
@@ -16,7 +17,7 @@ const TabsBar: React.FC<ITabsBarProps> = ({ variant }) => {
     case "currency":
       return <Currency />;
     case "cryptocurrency":
-      return <div></div>;
+      return <CryptoCurrency />;
   }
 };
 export default TabsBar;

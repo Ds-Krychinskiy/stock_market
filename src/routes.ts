@@ -19,3 +19,5 @@ export const ListETF = "list_etf";
 export const HistoricalPrices = "historical_prices";
 export const SectorWeightings = "sector_weightings";
 export const CountryWeightions = "country_weightions";
+
+export const PriceCryptoCurrency = "price_cryptocurrency";

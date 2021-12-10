@@ -9,8 +9,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
-import { TableWrapper, Wrapper } from "../../Stock_Screener/style";
 import { TypographyStyle } from "../../../../../atoms/typography/style";
+import { TableWrapper, Wrapper } from "../../../style";
 
 interface IFinancialRatios {
   date: string;

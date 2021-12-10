@@ -10,8 +10,8 @@ export const InputMoleculeStyle = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-max-width: 1440px;
-width: 100%;
-display: flex;
-justify-content: center;
-`
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;

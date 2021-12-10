@@ -65,6 +65,7 @@ const CompanyFR: React.FC<ICompanyFRProps> = ({ tiker }) => {
         console.log("Sorry, Bro");
       });
   }, [tiker]);
+
   return (
     <div>
       {stocks.map((e) => (
@@ -72,30 +73,54 @@ const CompanyFR: React.FC<ICompanyFRProps> = ({ tiker }) => {
           <Typography>P/E: {e.peRatioTTM}</Typography>
           <Typography>PEG: {e.pegRatioTTM}</Typography>
           <Typography>Коэффициент выплат: {e.payoutRatioTTM}</Typography>
-          <Typography>Коэффициент текущей ликвидности: {e.currentRatioTTM}</Typography>
+          <Typography>
+            Коэффициент текущей ликвидности: {e.currentRatioTTM}
+          </Typography>
           <Typography>Дивидендная доходность: {e.dividendYielTTM}</Typography>
           <Typography>Коэффициент выплат: {e.payoutRatioTTM}</Typography>
-          <Typography>Оборачиваемость оборотного капитала: {e.operatingCycleTTM}</Typography>
-          <Typography>Количество дней до конца продаж: {e.daysOfSalesOutstandingTTM}</Typography>
-          <Typography>Оборачиваемость оборотного капитала: {e.operatingCycleTTM}</Typography>
-          <Typography>Количество дней к оплате: {e.daysOfPayablesOutstandingTTM}</Typography>
-          <Typography>Цикл конвертации наличных денег: {e.cashConversionCycleTTM}</Typography>
+          <Typography>
+            Оборачиваемость оборотного капитала: {e.operatingCycleTTM}
+          </Typography>
+          <Typography>
+            Количество дней до конца продаж: {e.daysOfSalesOutstandingTTM}
+          </Typography>
+          <Typography>
+            Оборачиваемость оборотного капитала: {e.operatingCycleTTM}
+          </Typography>
+          <Typography>
+            Количество дней к оплате: {e.daysOfPayablesOutstandingTTM}
+          </Typography>
+          <Typography>
+            Цикл конвертации наличных денег: {e.cashConversionCycleTTM}
+          </Typography>
           <Typography>Валовая прибыль: {e.grossProfitMarginTTM}</Typography>
-          <Typography>Маржа опарационнаой прибыли: {e.operatingProfitMarginTTM}</Typography>
-          <Typography>Маржа прибыли до налогообложения: {e.pretaxProfitMarginTTM}</Typography>
+          <Typography>
+            Маржа опарационнаой прибыли: {e.operatingProfitMarginTTM}
+          </Typography>
+          <Typography>
+            Маржа прибыли до налогообложения: {e.pretaxProfitMarginTTM}
+          </Typography>
           <Typography>Маржа чистой прибыли: {e.netProfitMarginTTM}</Typography>
-          <Typography>Эффективная нологовая ставка: {e.effectiveTaxRateTTM}</Typography>
+          <Typography>
+            Эффективная нологовая ставка: {e.effectiveTaxRateTTM}
+          </Typography>
           <Typography>ROA: {e.returnOnAssetsTTM}</Typography>
           <Typography>ROE: {e.returnOnEquityTTM}</Typography>
-          <Typography>Доход на вложенный капитал: {e.returnOnCapitalEmployedTTM}</Typography>
+          <Typography>
+            Доход на вложенный капитал: {e.returnOnCapitalEmployedTTM}
+          </Typography>
           <Typography>EBIT/EV: {e.ebtPerEbitTTM}</Typography>
           <Typography>D/E: {e.debtRatioTTM}</Typography>
           <Typography>
             Отношение долгосрочной задолженности к капитализации:{" "}
             {e.longTermDebtToCapitalizationTTM}
           </Typography>
-          <Typography>Коэффициент покрытия процентов: {e.interestCoverageTTM}</Typography>
-          <Typography>Отношение денежного потока к долгу: {e.cashFlowToDebtRatioTTM}</Typography>
+          <Typography>
+            Коэффициент покрытия процентов: {e.interestCoverageTTM}
+          </Typography>
+          <Typography>
+            Отношение денежного потока к долгу: {e.cashFlowToDebtRatioTTM}
+          </Typography>
           <Typography>
             Мультипликатор собственного капитала: {e.companyEquityMultiplierTTM}
           </Typography>
@@ -103,7 +128,9 @@ const CompanyFR: React.FC<ICompanyFRProps> = ({ tiker }) => {
             Коэффициент оборачиваемости дебиторской задолжнности:{" "}
             {e.receivablesTurnoverTTM}
           </Typography>
-          <Typography>Коэффициент оборачиваемости запасов: {e.inventoryTurnoverTTM}</Typography>
+          <Typography>
+            Коэффициент оборачиваемости запасов: {e.inventoryTurnoverTTM}
+          </Typography>
           <Typography>
             Оборот активов в ходе хозяйственной деятельности:{" "}
             {e.fixedAssetTurnoverTTM}
@@ -112,13 +139,17 @@ const CompanyFR: React.FC<ICompanyFRProps> = ({ tiker }) => {
             Операционный денежный поток на акцию:{" "}
             {e.operatingCashFlowPerShareTTM}
           </Typography>
-          <Typography>Свободный денежный поток на акцию: {e.freeCashFlowPerShareTTM}</Typography>
+          <Typography>
+            Свободный денежный поток на акцию: {e.freeCashFlowPerShareTTM}
+          </Typography>
           <Typography>Денежный поток на акцию: {e.cashPerShareTTM}</Typography>
           <Typography>
             Операционный денежный поток / коэффициент продаж:{" "}
             {e.operatingCashFlowSalesRatioTTM}
           </Typography>
-          <Typography>P/OCF: {e.freeCashFlowOperatingCashFlowRatioTTM}</Typography>
+          <Typography>
+            P/OCF: {e.freeCashFlowOperatingCashFlowRatioTTM}
+          </Typography>
           <Typography>
             Отношение денежного потока к долгу: {e.cashFlowCoverageRatiosTTM}
           </Typography>

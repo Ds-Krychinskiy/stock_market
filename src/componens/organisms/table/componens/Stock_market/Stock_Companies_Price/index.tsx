@@ -48,7 +48,9 @@ const StockCP: React.FC<ICompanyPRProps> = ({ tiker }) => {
             Биржа, на которой торгуются ценные бумаги компании:
             {el.exchange}
           </Typography>
-          <Typography>Дата публичного размещения компании: {el.ipoDate}</Typography>
+          <Typography>
+            Дата публичного размещения компании: {el.ipoDate}
+          </Typography>
         </>
       ))}
     </div>

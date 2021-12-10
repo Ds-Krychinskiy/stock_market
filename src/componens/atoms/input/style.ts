@@ -7,7 +7,7 @@ export const InputStyle = styled.input`
   border-radius: 15px;
   padding-left: 15px;
   background-color: black;
-  ::placeholder{
+  ::placeholder {
     color: #f26b38;
   }
 `;
