@@ -1,14 +1,14 @@
-export interface IStringList {
+export interface StringList {
   label: string;
   key: string;
 }
 
-export interface INumberList {
+export interface NumberList {
   label: number;
   key: number;
 }
 
-export const listSector: IStringList[] = [
+export const listSector: StringList[] = [
   {
     label: "Consumer Cyclical",
     key: "Consumer Cyclical",
@@ -71,7 +71,7 @@ export const listSector: IStringList[] = [
   },
 ];
 
-export const listCountry: IStringList[] = [
+export const listCountry: StringList[] = [
   {
     label: "United States",
     key: "US",
@@ -262,7 +262,7 @@ export const listCountry: IStringList[] = [
   },
 ];
 
-export const listExchange: IStringList[] = [
+export const listExchange: StringList[] = [
   {
     label: "New York Stock Exchange",
     key: "nyse",
@@ -293,7 +293,7 @@ export const listExchange: IStringList[] = [
   },
 ];
 
-export const listIndustry: IStringList[] = [
+export const listIndustry: StringList[] = [
   {
     label: "Autos",
     key: "Autos",
@@ -324,7 +324,7 @@ export const listIndustry: IStringList[] = [
   },
 ];
 
-export const listMarketCap: INumberList[] = [
+export const listMarketCap: NumberList[] = [
   {
     label: 1000000000000,
     key: 1000000000000,
@@ -407,7 +407,7 @@ export const listMarketCap: INumberList[] = [
   },
 ];
 
-export const listDiv: INumberList[] = [
+export const listDiv: NumberList[] = [
   {
     label: 0,
     key: 0,
@@ -454,7 +454,7 @@ export const listDiv: INumberList[] = [
   },
 ];
 
-export const listTradingVolume: INumberList[] = [
+export const listTradingVolume: NumberList[] = [
   {
     label: 10000,
     key: 10000,
@@ -493,7 +493,7 @@ export const listTradingVolume: INumberList[] = [
   },
 ];
 
-export const listBeta: INumberList[] = [
+export const listBeta: NumberList[] = [
   {
     label: 0,
     key: 0,
@@ -523,3 +523,57 @@ export const listBeta: INumberList[] = [
     key: 6,
   },
 ];
+
+// export const DropDownList: ListProps[] = [
+//   {
+//     id: 1,
+//     list: listSector,
+//     label: "Sector",
+//     state: "",
+//   },
+//   {
+//     id: 2,
+//     list: listCountry,
+//     label: "Country",
+//     state: "",
+//   },
+//   {
+//     id: 3,
+//     list: listExchange,
+//     label: "Exchange",
+//     state: "",
+//   },
+//   {
+//     id: 4,
+//     list: listIndustry,
+//     label: "Industry",
+//     state: "",
+//   },
+//   {
+//     id: 5,
+//     list: listMarketCap,
+//     label: "Capitalization",
+//     state: 0,
+
+//   },
+//   {
+//     id: 6,
+//     list: listDiv,
+//     label: "Dividends",
+//     state: 0,
+
+//   },
+//   {
+//     id: 7,
+//     list: listTradingVolume,
+//     label: "Trading Volume",
+//     state: 0,
+
+//   },
+//   {
+//     id: 8,
+//     list: listBeta,
+//     label: "Volatility",
+//     state: 0,
+//   },
+// ];
