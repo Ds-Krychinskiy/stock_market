@@ -1,9 +1,9 @@
-import Button from "../../atoms/button";
 import Typograhy from "../../atoms/typograhy";
 import Refs from "../../molecule/refs";
 import Inform from "../../temlates/portfolio";
 import { PortfolioStyle } from "./style";
-
+import {Link} from "react-router-dom"
+import {StockScreenerRoute} from "../../../consts"
 const Portfolio = () => {
   return (
     <PortfolioStyle>
@@ -14,7 +14,7 @@ const Portfolio = () => {
           <Typograhy>and this is my pet-project</Typograhy>
           <Typograhy>My skills:</Typograhy>
           <Typograhy>Буду рад любому фидбеку!</Typograhy>
-          {/* <Button></Button> */}
+          <Link to={`/${StockScreenerRoute}`}>Okey, lets go</Link>
           <Refs href={"https://t.me/denis_krychinskiy"} target={"blank"}>
             Telegram
           </Refs>

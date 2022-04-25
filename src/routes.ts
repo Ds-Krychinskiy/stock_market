@@ -1,26 +1,19 @@
-import Button from "./component/atoms/button";
-import Input from "./component/atoms/input";
-import Inform from "./component/temlates/portfolio";
+import CompanyPage from "./component/pages/companyPage";
+import Portfolio from "./component/pages/portfolio";
+import StockScreener from "./component/pages/stock_screener";
+import { StockScreenerRoute, PortfolioRoute, CompanyRoute } from "./consts";
 
-export const PortfolioRoute = [
+export const MapPages = [
   {
-    Component: Inform,
-    Content: Input,
+    Component: StockScreener,
+    RouteComponent: StockScreenerRoute,
   },
   {
-    Component: Inform,
-    Content: Button,
+    Component: Portfolio,
+    RouteComponent: PortfolioRoute,
   },
   {
-    Component: Inform,
-    Content: Input,
-  },
-  {
-    Component: Inform,
-    Content: Input,
-  },
-  {
-    Component: Inform,
-    Content: Input,
+    Component: CompanyPage,
+    RouteComponent: CompanyRoute + "/:name",
   },
 ];

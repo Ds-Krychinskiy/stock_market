@@ -4,6 +4,7 @@ import { StockMultipliersProps } from "../../interface";
 
 class StockState {
   multipliers: StockMultipliersProps[] = [];
+  tiker = "";
   constructor() {
     makeAutoObservable(this);
   }

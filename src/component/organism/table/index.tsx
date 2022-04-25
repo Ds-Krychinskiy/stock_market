@@ -1,20 +1,21 @@
 import React from "react";
 import { OneCompanyProps } from "../../../interface";
-import { TableStyle } from "./style";
-
+import { ElementWrapper, TableStyle } from "./style";
 interface TableProps {
   state: OneCompanyProps[];
+  onClick: (name: string) => void;
 }
 
-const Table: React.FC<TableProps> = ({ state }) => {
+const Table: React.FC<TableProps> = ({ state, onClick }) => {
   return (
     <TableStyle>
       {state.map((el: OneCompanyProps) => (
-        <div key={el.name}>
-          <p>{el.symbol}</p>
-        </div>
-      )
-      )}
+        <ElementWrapper key={el.name} onClick={()=> onClick(el.name)}>
+            <p>{el.symbol}</p>
+            <p>{el.name}</p>
+            <p>{el.stockExchange}</p>
+        </ElementWrapper>
+      ))}
     </TableStyle>
   );
 };

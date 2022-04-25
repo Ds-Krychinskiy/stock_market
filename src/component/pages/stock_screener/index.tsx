@@ -1,5 +1,5 @@
-import { useHistory } from "react-router";
-import { useState } from "react";
+import { useNavigate } from "react-router";
+import {  useState } from "react";
 import { useCallback } from "react";
 import axios from "axios";
 import Stock_Screener_State from "../../../state/Stock_Screener_State";
@@ -7,6 +7,7 @@ import SeatchBar from "../../organism/search_bar";
 import Table from "../../organism/table";
 import { ScreenerWrapper } from "./style";
 import { observer } from "mobx-react-lite";
+import { CompanyRoute, StockScreenerRoute } from "../../../consts";
 
 export interface StateProps {
   sector: string;
@@ -35,13 +36,14 @@ const CreateState = {
 const StockScreener = observer(() => {
   const [valueInput, setValueInput] = useState("");
   const [listProps, setListProps] = useState<StateProps>(CreateState);
+
   const { companies, oneCompany, getOneOfCompany, getListOfCompanies } =
     Stock_Screener_State;
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const GoToCompanyPage = (way: string) => {
-    history.push(way);
+    navigate(`${CompanyRoute}/${way}`)
   };
 
   const getValueFromDropdownList = useCallback(
@@ -73,12 +75,8 @@ const StockScreener = observer(() => {
     }
   };
 
-  const fetchCompany = () => {
-    if (Boolean(valueInput) === true) {
-      return getOneCompany();
-    } else {
-      return getListCompany();
-    }
+  const fetchCompany = async () => {
+    return await getOneCompany();
   };
 
   return (
@@ -90,7 +88,7 @@ const StockScreener = observer(() => {
         setValueInput={setValueInput}
         onClick={fetchCompany}
       />
-      <Table state={oneCompany}></Table>
+      <Table state={oneCompany} onClick={GoToCompanyPage} />
     </ScreenerWrapper>
   );
 });

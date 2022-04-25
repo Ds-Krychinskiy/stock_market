@@ -14,7 +14,7 @@ const Global = createGlobalStyle`
 
 ReactDOM.render(
   <React.StrictMode>
-    <Global/>
+    <Global />
     <App />
   </React.StrictMode>,
   document.getElementById("root")

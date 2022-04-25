@@ -1,7 +1,7 @@
-import React from "react";
 
 const CompanyPage = () => {
-  return <div></div>;
+
+  return <div>Working</div>;
 };
 
 export default CompanyPage;
