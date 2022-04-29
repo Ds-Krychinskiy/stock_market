@@ -2,8 +2,8 @@ import Typograhy from "../../atoms/typograhy";
 import Refs from "../../molecule/refs";
 import Inform from "../../temlates/portfolio";
 import { PortfolioStyle } from "./style";
-import {Link} from "react-router-dom"
-import {StockScreenerRoute} from "../../../consts"
+import { Link } from "react-router-dom";
+import { StockScreenerRoute } from "../../../consts";
 const Portfolio = () => {
   return (
     <PortfolioStyle>

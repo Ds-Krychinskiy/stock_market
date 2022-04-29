@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { ScreenerСompaniesProps, OneCompanyProps } from "../../interface";
+import { OneCompanyProps, ScreenerСompaniesProps } from "./interface";
 class StockScreenerState {
   companies: ScreenerСompaniesProps[] = [];
   oneCompany: OneCompanyProps[] = [];

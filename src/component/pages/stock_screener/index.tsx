@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import {  useState } from "react";
+import { useState } from "react";
 import { useCallback } from "react";
 import axios from "axios";
 import Stock_Screener_State from "../../../state/Stock_Screener_State";
@@ -8,6 +8,8 @@ import Table from "../../organism/table";
 import { ScreenerWrapper } from "./style";
 import { observer } from "mobx-react-lite";
 import { CompanyRoute, StockScreenerRoute } from "../../../consts";
+import { renderOneCompany } from "./render";
+import Stock_Market_State from "../../../state/Stock_Market_State";
 
 export interface StateProps {
   sector: string;
@@ -40,10 +42,12 @@ const StockScreener = observer(() => {
   const { companies, oneCompany, getOneOfCompany, getListOfCompanies } =
     Stock_Screener_State;
 
+  const { getPriceCompanyInRealTime } = Stock_Market_State;
   const navigate = useNavigate();
 
-  const GoToCompanyPage = (way: string) => {
-    navigate(`${CompanyRoute}/${way}`)
+  const GoToCompanyPage = async (way: string) => {
+    await getPriceCompanyInRealTime();
+    navigate(`/${StockScreenerRoute}${CompanyRoute}/${way}`);
   };
 
   const getValueFromDropdownList = useCallback(
@@ -75,10 +79,6 @@ const StockScreener = observer(() => {
     }
   };
 
-  const fetchCompany = async () => {
-    return await getOneCompany();
-  };
-
   return (
     <ScreenerWrapper>
       <SeatchBar
@@ -86,9 +86,12 @@ const StockScreener = observer(() => {
         valueInput={valueInput}
         getValueFromDropdownList={getValueFromDropdownList}
         setValueInput={setValueInput}
-        onClick={fetchCompany}
+        onClick={getOneCompany}
       />
-      <Table state={oneCompany} onClick={GoToCompanyPage} />
+      <Table
+        state={() => renderOneCompany(oneCompany, GoToCompanyPage)}
+        onClick={GoToCompanyPage}
+      />
     </ScreenerWrapper>
   );
 });

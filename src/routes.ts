@@ -14,6 +14,6 @@ export const MapPages = [
   },
   {
     Component: CompanyPage,
-    RouteComponent: CompanyRoute + "/:name",
+    RouteComponent: StockScreenerRoute + CompanyRoute + "/:name",
   },
 ];
