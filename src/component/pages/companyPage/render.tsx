@@ -1,176 +1,221 @@
+import Stock_Market_State from "../../../state/Stock_Market_State";
 import {
   CompanyFinancialRatiosProps,
   CompanyNewsProps,
-  CompanyPriceProps,
-  FinancialRationsProps,
+  FinancialMultipliersProps,
   KeyExecutivesProps,
-  PriceAtTheMomentProps,
   SecFilingsProps,
 } from "../../../state/Stock_Market_State/interface";
-import { HeaderWrapper } from "./style";
+import Ref from "../../atoms/ref";
+import Typography from "../../atoms/typograhy";
+import Paragraph from "../../molecule/paragraph";
+import AccordionOrganism from "../../organism/accordion/index";
 
-export const renderMultipliers = (multipliers: FinancialRationsProps[]) => (
-  <>
-    {multipliers.map((e: FinancialRationsProps) => (
-      <div key={e.GrossProfitMarginTTM}>
-        <p>
-          Отношение долгосрочной задолженности к капитализации:{" "}
-          {e.longTermDebtToCapitalizationTTM}
-        </p>
-        <p>Коэффициент покрытия процентов: {e.interestCoverageTTM}</p>
-        <p>Отношение денежного потока к долгу: {e.cashFlowToDebtRatioTTM}</p>
-        <p>
-          Мультипликатор собственного капитала: {e.companyEquityMultiplierTTM}
-        </p>
-        <p>
-          Коэффициент оборачиваемости дебиторской задолжнности:{" "}
-          {e.receivablesTurnoverTTM}
-        </p>
-        <p>Коэффициент оборачиваемости запасов: {e.inventoryTurnoverTTM}</p>
-        <p>
-          Оборот активов в ходе хозяйственной деятельности:{" "}
-          {e.fixedAssetTurnoverTTM}
-        </p>
-        <p>
-          Операционный денежный поток на акцию: {e.operatingCashFlowPerShareTTM}
-        </p>
-        <p>Свободный денежный поток на акцию: {e.freeCashFlowPerShareTTM}</p>
-        <p>Денежный поток на акцию: {e.cashPerShareTTM}</p>
-        <p>
-          Операционный денежный поток / коэффициент продаж:{" "}
-          {e.operatingCashFlowSalesRatioTTM}
-        </p>
-        <p>P/OCF: {e.freeCashFlowOperatingCashFlowRatioTTM}</p>
-        <p>Отношение денежного потока к долгу: {e.cashFlowCoverageRatiosTTM}</p>
-        <p>P/B: {e.priceBookValueRatioTTM}</p>
-        <p>P/S: {e.priceToSalesRatioTTM}</p>
-        <p>P/FCF: {e.priceToFreeCashFlowsRatioTTM}</p>
-        <p>Дивидендная доходность: {e.dividendYieldTTM}</p>
-        <p>Справедливая стоимость: {e.priceFairValueTTM}</p>
-        <p>DPS: {e.dividendPerShareTTM}</p>
-      </div>
-    ))}
-  </>
-);
+const {
+  multipliers,
+  executive,
+  filings,
+  financial_rations,
+  news,
+  getMultipliers,
+  getCompanyNews,
+  getSecFilings,
+  getKeyExecutives,
+} = Stock_Market_State;
 
-export const renderCompanyPrice = (state: CompanyPriceProps[]) => (
-  <>
-    {state.map((e: CompanyPriceProps) => (
+const MapAccordion = [
+  {
+    name: "Financial Rations",
+    state: ()=>(
       <>
-        <p>Цена одной акции: {e.price}</p>
-        <p>Сектор работы компании: {e.sector}</p>
-        <p>Штат: {e.state}</p>
-        <p>Город: {e.city}</p>
-        <p>CEO: {e.ceo}</p>
-        <p>Описание: {e.description}</p>
-        <p>
-          Cайт:
-          <a href={e.website}>{e.website}</a>
-        </p>
-        <p>
-          Биржа, на которой торгуются ценные бумаги компании:
-          {e.exchange}
-        </p>
-        <p>Дата публичного размещения компании: {e.ipoDate}</p>
+        {multipliers.map((e: FinancialMultipliersProps) => (
+          <Paragraph key={e.GrossProfitMarginTTM}>
+            <Typography variant={"h2"}>
+              Отношение долгосрочной задолженности к капитализации:{" "}
+              {e.longTermDebtToCapitalizationTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Коэффициент покрытия процентов: {e.interestCoverageTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Отношение денежного потока к долгу: {e.cashFlowToDebtRatioTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Мультипликатор собственного капитала:{" "}
+              {e.companyEquityMultiplierTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Коэффициент оборачиваемости дебиторской задолжнности:{" "}
+              {e.receivablesTurnoverTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Коэффициент оборачиваемости запасов: {e.inventoryTurnoverTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Оборот активов в ходе хозяйственной деятельности:{" "}
+              {e.fixedAssetTurnoverTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Операционный денежный поток на акцию:{" "}
+              {e.operatingCashFlowPerShareTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Свободный денежный поток на акцию: {e.freeCashFlowPerShareTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Денежный поток на акцию: {e.cashPerShareTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Операционный денежный поток / коэффициент продаж:{" "}
+              {e.operatingCashFlowSalesRatioTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              P/OCF: {e.freeCashFlowOperatingCashFlowRatioTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Отношение денежного потока к долгу: {e.cashFlowCoverageRatiosTTM}
+            </Typography>
+            <Typography variant={"h2"}>P/B: {e.priceBookValueRatioTTM}</Typography>
+            <Typography variant={"h2"}>P/S: {e.priceToSalesRatioTTM}</Typography>
+            <Typography variant={"h2"}>P/FCF: {e.priceToFreeCashFlowsRatioTTM}</Typography>
+            <Typography variant={"h2"}>
+              Дивидендная доходность: {e.dividendYieldTTM}
+            </Typography>
+            <Typography variant={"h2"}>
+              Справедливая стоимость: {e.priceFairValueTTM}
+            </Typography>
+            <Typography variant={"h2"}>DPS: {e.dividendPerShareTTM}</Typography>
+          </Paragraph>
+        ))}
       </>
-    ))}
-  </>
-);
-
-export const renderFinancialResults = (
-  state: CompanyFinancialRatiosProps[]
-) => (
-  <div>
-    {state.map((e: CompanyFinancialRatiosProps) => (
+    ),
+    onClick: () => getMultipliers(),
+  },
+  {
+    name: "Financial Results",
+    state: (
       <>
-        <p>Дата публикации отчёта: {e.date}</p>
-        <p>Валюта отчётности: {e.reportedCurrency}</p>
-        <p>Отчётный период: {e.period}</p>
-        <p>Доход: {e.revenue}</p>
-        <p>Валовой доход: {e.grossProfit}</p>
-        <p>Коэффициент валовой прибыли: {e.grossProfitRatio} </p>
-        <p>
-          Расходы на исследование и разработки:
-          {e.researchAndDevelopmentExpenses}
-        </p>
-        <p>
-          Общие и административные расходы: {e.generalAndAdministrativeExpenses}
-        </p>
-        <p>Расходы на продажу: {e.sellingAndMarketingExpenses}</p>
-        <p>Опарационные расходы: {e.operatingExpenses}</p>
-        <p>износ и амортизация: {e.depreciationAndAmortization}</p>
-        <p>Прочие расходы: {e.otherExpenses}</p>
-        <p>Ebitda: {e.ebitda}</p>
-        <p>Операционная прибыль: {e.operatingIncome}</p>
-        <p>Операционная маржа: {e.operatingIncomeRatio}</p>
-        <p>прочие доходы: {e.totalOtherIncomeExpensesNet}</p>
-        <p>Доход до налогообложения: {e.incomeBeforeTax}</p>
-        <p>Расходы по налогу на прибыль: {e.incomeTaxExpense}</p>
-        <p>Чистая прибыль: {e.netIncome}</p>
-        <p>Коэффициент чистой прибыли: {e.netIncomeRatio}</p>
-        <p>Прибыль на акцию: {e.eps}</p>
-        <p>
-          Ссылка на отчёт:{" "}
-          <a href={e.finalLink} target="blank">
-            {e.finalLink}
-          </a>
-        </p>
+        {financial_rations.map((e: CompanyFinancialRatiosProps) => (
+          <Paragraph>
+            <Typography variant={"h2"}>Дата публикации отчёта: {e.date}</Typography>
+            <Typography variant={"h2"}>Валюта отчётности: {e.reportedCurrency}</Typography>
+            <Typography variant={"h2"}>Отчётный период: {e.period}</Typography>
+            <Typography variant={"h2"}>Доход: {e.revenue}</Typography>
+            <Typography variant={"h2"}>Валовой доход: {e.grossProfit}</Typography>
+            <Typography variant={"h2"}>
+              Коэффициент валовой прибыли: {e.grossProfitRatio}{" "}
+            </Typography>
+            <Typography variant={"h2"}>
+              Расходы на исследование и разработки:
+              {e.researchAndDevelopmentExpenses}
+            </Typography>
+            <Typography variant={"h2"}>
+              Общие и административные расходы:{" "}
+              {e.generalAndAdministrativeExpenses}
+            </Typography>
+            <Typography variant={"h2"}>
+              Расходы на продажу: {e.sellingAndMarketingExpenses}
+            </Typography>
+            <Typography variant={"h2"}>Опарационные расходы: {e.operatingExpenses}</Typography>
+            <Typography variant={"h2"}>
+              износ и амортизация: {e.depreciationAndAmortization}
+            </Typography>
+            <Typography variant={"h2"}>Прочие расходы: {e.otherExpenses}</Typography>
+            <Typography variant={"h2"}>Ebitda: {e.ebitda}</Typography>
+            <Typography variant={"h2"}>Операционная прибыль: {e.operatingIncome}</Typography>
+            <Typography variant={"h2"}>
+              Операционная маржа: {e.operatingIncomeRatio}
+            </Typography>
+            <Typography variant={"h2"}>
+              прочие доходы: {e.totalOtherIncomeExpensesNet}
+            </Typography>
+            <Typography variant={"h2"}>
+              Доход до налогообложения: {e.incomeBeforeTax}
+            </Typography>
+            <Typography variant={"h2"}>
+              Расходы по налогу на прибыль: {e.incomeTaxExpense}
+            </Typography>
+            <Typography variant={"h2"}>Чистая прибыль: {e.netIncome}</Typography>
+            <Typography variant={"h2"}>
+              Коэффициент чистой прибыли: {e.netIncomeRatio}
+            </Typography>
+            <Typography variant={"h2"}>Прибыль на акцию: {e.eps}</Typography>
+            <Typography variant={"h2"}>
+              Ссылка на отчёт:{" "}
+              <Ref href={e.finalLink} target="blank">
+                {e.finalLink}
+              </Ref>
+            </Typography>
+          </Paragraph>
+        ))}
       </>
-    ))}
-  </div>
-);
-
-export const renderCompanyNews = (state: CompanyNewsProps[]) => (
-  <>
-    {state.map((e: CompanyNewsProps) => (
+    ),
+    onClick: () => console.log("kek"),
+  },
+  {
+    name: "Company News",
+    state: (
       <>
-        <p>Дата публикации: {e.publishedDate}</p>
-        <p>{e.title}</p>
-        <p>{e.text}</p>
-        <a href={e.url}>{e.url}</a>
+        {news.map((e: CompanyNewsProps) => (
+          <Paragraph>
+            <Typography variant={"h2"}>Дата публикации: {e.publishedDate}</Typography>
+            <Typography variant={"h2"}>{e.title}</Typography>
+            <Typography variant={"h2"}>{e.text}</Typography>
+            <Ref href={e.url} target="blank">{e.url}</Ref>
+          </Paragraph>
+        ))}
       </>
-    ))}
-  </>
-);
-
-export const renderKeyExecutives = (state: KeyExecutivesProps[]) => (
-  <>
-    {state.map((e: KeyExecutivesProps) => (
+    ),
+    onClick: () => getCompanyNews(),
+  },
+  {
+    name: "Sec Filings",
+    state: (
       <>
-        <p>Должность: {e.title}</p>
-        <p>Имя: {e.name}</p>
-        <p>Пол: {e.gender}</p>
-        <p>Год рождения: {e.yearBorn}</p>
-        <p>Дата вступление в должность: {e.titleSince}</p>
+        {filings.map((e: SecFilingsProps) => (
+          <Paragraph>
+            <Typography variant={"h2"}>Дата публикации отчёта: {e.acceptedDate}</Typography>
+            <Typography variant={"h2"}>Форма отчёта: {e.type}</Typography>
+            <Typography variant={"h2"}>
+              Ссылка на отчёт:
+              <Ref href={e.finalLink} target="blank">
+                {e.finalLink}
+              </Ref>
+            </Typography>
+          </Paragraph>
+        ))}
       </>
-    ))}
-  </>
-);
+    ),
+    onClick: () => getSecFilings(),
+  },
+  {
+    name: "Key Executives",
+    state: (
+      <>
+        {executive.map((e: KeyExecutivesProps) => (
+          <Paragraph>
+            <Typography variant={"h2"}>Должность: {e.title}</Typography>
+            <Typography variant={"h2"}>Имя: {e.name}</Typography>
+            <Typography variant={"h2"}>Пол: {e.gender}</Typography>
+            <Typography variant={"h2"}>Год рождения: {e.yearBorn}</Typography>
+            <Typography variant={"h2"}>Дата вступление в должность: {e.titleSince}</Typography>
+          </Paragraph>
+        ))}
+      </>
+    ),
+    onClick: () => getKeyExecutives(),
+  },
+];
 
-export const renderSecFilings = (state: SecFilingsProps[]) => (
+export const renderAccordion = () => (
   <>
-    {state.map((e) => (
-      <div>
-        <p>Дата публикации отчёта: {e.acceptedDate}</p>
-        <p>Форма отчёта: {e.type}</p>
-        <p>
-          Ссылка на отчёт:
-          <a href={e.finalLink} target="blank">
-            {e.finalLink}
-          </a>
-        </p>
-      </div>
-    ))}
-  </>
-);
-
-export const renderPriceAtTheMoment = (state: PriceAtTheMomentProps[]) => (
-  <>
-    {state.map((e: PriceAtTheMomentProps) => (
-      <HeaderWrapper key={e.symbol}>
-        <p>{e.symbol}</p>
-        <p>{e.price}</p>
-      </HeaderWrapper>
+    {MapAccordion.map((e) => (
+      <AccordionOrganism
+        key={e.name}
+        name={e.name}
+        state={e.state}
+        onClick={e.onClick}
+      />
     ))}
   </>
 );

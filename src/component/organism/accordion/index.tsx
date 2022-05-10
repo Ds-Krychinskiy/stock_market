@@ -1,33 +1,18 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "../../atoms/typograhy";
+import { ReactNode } from "react";
+import AccordionCompanent from "../../atoms/accordion";
 
 interface AccordionProps {
   name: string;
-  state: () => JSX.Element;
+  state: ReactNode;
   onClick: () => void;
 }
 
-const AccordionComponent: React.FC<AccordionProps> = ({
+const AccordionOrganism: React.FC<AccordionProps> = ({
   name,
   state,
   onClick,
 }) => {
-  return (
-    <div>
-      <Accordion>
-        <AccordionSummary
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          onClick={() => onClick()}
-        >
-          <Typography>{name}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>{state()}</AccordionDetails>
-      </Accordion>
-    </div>
-  );
+  return <AccordionCompanent name={name} state={state} onClick={onClick} />;
 };
 
-export default AccordionComponent;
+export default AccordionOrganism;

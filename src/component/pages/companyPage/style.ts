@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const CompanyPageWrapper = styled.div`
-  height: 1000px;
-  display: grid;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 export const MultipliersWrapper = styled.div`
@@ -13,6 +14,7 @@ export const MultipliersWrapper = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-display: flex;
-justify-content: space-around;
-`
+  display: flex;
+  justify-content: space-around;
+  width: 5em;
+`;

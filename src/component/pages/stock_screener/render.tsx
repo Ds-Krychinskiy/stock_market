@@ -1,4 +1,5 @@
 import { OneCompanyProps } from "../../../state/Stock_Screener_State/interface";
+import Typography from "../../atoms/typograhy";
 import { ElementWrapper } from "../../organism/table/style";
 
 export const renderOneCompany = (
@@ -8,9 +9,9 @@ export const renderOneCompany = (
   <>
     {state.map((el: OneCompanyProps) => (
       <ElementWrapper key={el.name} onClick={() => onClick(el.name)}>
-        <p>{el.symbol}</p>
-        <p>{el.name}</p>
-        <p>{el.stockExchange}</p>
+        <Typography variant={""}>{el.symbol}</Typography>
+        <Typography variant={""}>{el.name}</Typography>
+        <Typography variant={""}>{el.stockExchange}</Typography>
       </ElementWrapper>
     ))}
   </>

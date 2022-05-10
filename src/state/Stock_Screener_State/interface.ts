@@ -22,3 +22,15 @@ export interface OneCompanyProps {
   stockExchange: string;
   exchangeShortName: string;
 }
+
+export interface StateProps {
+  sector: string;
+  services: string;
+  industry: string;
+  country: string;
+  exchange: string;
+  marketCap: number;
+  tradingVolume: number;
+  dividend: number;
+  beta: number;
+}

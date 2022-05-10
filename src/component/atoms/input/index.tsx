@@ -1,16 +1,16 @@
 import { InputStyle } from "./style";
 interface InputProps {
   value: string;
-  label: string;
+  placeholder: string;
   onChange: (name: string) => void;
 }
-const Input: React.FC<InputProps> = ({ value, label, onChange }) => {
+const Input: React.FC<InputProps> = ({ value, placeholder, onChange }) => {
   return (
     <InputStyle
+      placeholder={placeholder}
       value={value}
-      label={label}
       onChange={(e) => onChange(e.target.value)}
-    ></InputStyle>
+    />
   );
 };
 

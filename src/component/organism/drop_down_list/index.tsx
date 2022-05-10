@@ -9,7 +9,7 @@ import {
   listSector,
   listTradingVolume,
 } from "../../../list";
-import { StateProps } from "../../pages/stock_screener";
+import { StateProps } from "../../../state/Stock_Screener_State/interface";
 
 interface DropProps {
   state: StateProps;

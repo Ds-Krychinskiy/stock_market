@@ -1,4 +1,4 @@
-export interface FinancialRationsProps {
+export interface FinancialMultipliersProps {
   peRatioTTM: number;
   pegRatioTTM: number;
   payoutRatioTTM: number;
@@ -65,17 +65,28 @@ export interface SecFilingsProps {
 }
 
 export interface CompanyPriceProps {
-  symbol: string;
-  companyName: string;
-  price: number;
-  sector: string;
-  state: string;
-  city: string;
-  ceo: string;
-  description: string;
-  website: string;
-  exchange: string;
-  ipoDate: string;
+  date: string;
+  open: number;
+  low: number;
+  high: number;
+  close: number;
+  volume: number;
+}
+
+export interface CompanyPriceForMondthProps {
+  date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  adjClose: number;
+  volume: number;
+  unadjustedVolume: number;
+  change: number;
+  changePercent: number;
+  vwap: number;
+  label: string;
+  changeOverTime: number;
 }
 
 export interface CompanyNewsProps {
