@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
-export const InformStyle = styled.div<{ ref: any }>`
+export const TemplateChartStyle = styled.div`
   display: flex;
-  width: 100%;
-  height: 100vh;
+  align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
 `;

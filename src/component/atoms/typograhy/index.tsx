@@ -1,16 +1,14 @@
-import { ReactNode } from "react";
-import { TypograhyStyle, PortfolioStyle, H3 } from "./style";
+import { ReactNode, forwardRef } from "react";
+import { TypograhyStyle } from "./style";
+import { motion } from "framer-motion";
 interface TypograhyProps {
-  children: JSX.Element | ReactNode;variant: string;
+  children: JSX.Element | ReactNode;
+  size: string;
 }
-const Typography: React.FC<TypograhyProps> = ({ children, variant }) => {
-  switch(variant){
-    case "hello": return <PortfolioStyle children={children}/>
-    case "h2":  return <TypograhyStyle>{children}</TypograhyStyle>;
-    case "h3": return <H3>{children}</H3>
-    default: return <h2>{children}</h2>
+export const Typography: React.FC<TypograhyProps> = forwardRef(
+  ({ children, size }, ref) => {
+    return <TypograhyStyle children={children} ref={ref} size={size} />;
   }
+);
 
-};
-
-export default Typography;
+export const MTypography = motion(Typography);

@@ -1,12 +1,15 @@
 import { ReactNode } from "react";
-import Typography from "../../atoms/typograhy";
+import { ParagraphStyle, Wrapp } from "./style";
 
 interface ParagraphProps {
-  children: JSX.Element | ReactNode;
+  state: () => ReactNode;
 }
-
-const Paragraph: React.FC<ParagraphProps> = ({ children }) => {
-  return <Typography variant={""}> {children}</Typography>;
+const Paragraph: React.FC<ParagraphProps> = ({ state }) => {
+  return (
+    <Wrapp>
+      <ParagraphStyle>{state()}</ParagraphStyle>
+    </Wrapp>
+  );
 };
 
 export default Paragraph;

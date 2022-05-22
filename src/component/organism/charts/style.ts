@@ -10,7 +10,7 @@ export const Wrapp = styled.div`
   height: 1000px;
 `;
 export const ButtonWrapp = styled.div`
-display: flex;
-align-items: center;
-height: 4em;
-`
+  display: flex;
+  align-items: center;
+  height: 4em;
+`;

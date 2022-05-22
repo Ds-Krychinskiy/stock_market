@@ -96,41 +96,14 @@ export interface CompanyNewsProps {
   text: string;
   url: string;
 }
-export interface CompanyFinancialRatiosProps {
-  date: string;
-  symbol: string;
-  reportedCurrency: string;
-  acceptedDate: string;
-  period: string;
-  revenue: number;
-  costOfRevenue: number;
-  grossProfit: number;
-  grossProfitRatio: number;
-  researchAndDevelopmentExpenses: number;
-  generalAndAdministrativeExpenses: number;
-  sellingAndMarketingExpenses: number;
-  sellingGeneralAndAdministrativeExpenses: number;
-  otherExpenses: number;
-  operatingExpenses: number;
-  costAndExpenses: number;
-  interestExpense: number;
-  depreciationAndAmortization: number;
-  ebitda: number;
-  ebitdaratio: number;
-  operatingIncome: number;
-  operatingIncomeRatio: number;
-  totalOtherIncomeExpensesNet: number;
-  incomeBeforeTax: number;
-  incomeBeforeTaxRatio: number;
-  incomeTaxExpense: number;
-  netIncome: number;
-  netIncomeRatio: number;
-  eps: number;
-  finalLink: string;
-}
 
 export interface PriceAtTheMomentProps {
   symbol: string;
   price: number;
   volume: number;
+}
+
+export interface PriceProps {
+  date: string;
+  open: number;
 }

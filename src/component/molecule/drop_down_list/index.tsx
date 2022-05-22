@@ -3,6 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import React from "react";
 import { NumberList, StringList } from "../../../list";
+import { Typography } from "../../atoms/typograhy";
 
 interface DropDownListProps {
   list: StringList[] | NumberList[];
@@ -19,16 +20,18 @@ const DropDown: React.FC<DropDownListProps> = ({ ...props }) => {
   };
 
   return (
-    <div>
-      <InputLabel>{name}</InputLabel>
+    <>
+      <InputLabel>
+        <Typography size={"1.2em"}>{name}</Typography>
+      </InputLabel>
       <Select value={state} onChange={handelChange}>
         {list.map((el) => (
           <MenuItem key={el.key} value={el.key}>
-            {el.label}
+            <Typography size={"1.2em"}>{el.label}</Typography>
           </MenuItem>
         ))}
       </Select>
-    </div>
+    </>
   );
 };
 

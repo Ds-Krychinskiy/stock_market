@@ -3,7 +3,6 @@ import _axios from "../../axios";
 import {
   CompanyNewsProps,
   FinancialMultipliersProps,
-  CompanyFinancialRatiosProps,
   CompanyPriceProps,
   KeyExecutivesProps,
   SecFilingsProps,
@@ -14,11 +13,9 @@ import {
 class StockState {
   valueInput: string = "";
   multipliers: FinancialMultipliersProps[] = [];
-  financialRetios: CompanyFinancialRatiosProps[] = [];
   news: CompanyNewsProps[] = [];
   executive: KeyExecutivesProps[] = [];
   filings: SecFilingsProps[] = [];
-  financial_rations: CompanyFinancialRatiosProps[] = [];
   price: CompanyPriceProps[] | CompanyPriceForMondthProps[] = [];
   price_at_the_moment: PriceAtTheMomentProps[] = [];
   constructor() {
@@ -32,7 +29,7 @@ class StockState {
   getMultipliers = async () => {
     try {
       const state = await _axios.get(`ratios-ttm/${this.valueInput}?`);
-      this.multipliers = [...this.multipliers, ...state.data];
+      this.multipliers = [...state.data];
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +40,7 @@ class StockState {
       const state = await _axios.get(
         `stock_news?tickers=$${this.valueInput}&limit=50&`
       );
-      this.news = [...this.news, ...state.data];
+      this.news = [...state.data];
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +55,7 @@ class StockState {
       console.log(error);
     }
   };
+
   getPriceCompanyInRealTime = async () => {
     try {
       const state = await _axios.get(`quote-short/${this.valueInput}`);
@@ -66,22 +64,27 @@ class StockState {
       console.log(error);
     }
   };
-  getPriceForChart = async (time: string) => {
+  getPriceForChart = async (time: string, count: number) => {
     try {
       const state = await _axios.get(
         `historical-chart/${time}/${this.valueInput}`
       );
-      this.price = [...state.data];
+      this.price = [
+        ...state.data
+          .filter((el: CompanyPriceProps) => el.date && el.open && el.volume)
+          .slice(0, count)
+          .reverse(),
+      ];
     } catch (error) {
       console.log(error);
     }
   };
-  getPriceForChartForTheMonth = async () => {
+  getPriceForChartForTheMonth = async (count: number) => {
     try {
       const state = await _axios.get(
         `historical-price-full/${this.valueInput}`
       );
-      this.price = [...state.data.historical];
+      this.price = [...state.data.historical.slice(0, count).reverse()];
     } catch (error) {
       console.log(error);
     }

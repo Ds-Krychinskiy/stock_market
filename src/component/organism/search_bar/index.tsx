@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../../atoms/button";
 import Input from "../../atoms/input";
-import { SearchBarStyle } from "./style";
 
 interface SearchBarProps {
   valueInput: string;
@@ -15,14 +14,14 @@ const SeatchBar: React.FC<SearchBarProps> = ({
   onClick,
 }) => {
   return (
-    <SearchBarStyle>
+    <>
       <Input
         value={valueInput}
         placeholder={"Enter company ticker..."}
         onChange={setValueInput}
       />
-      <Button variant={"search"} onClick={() => onClick(valueInput)} children={"Search..."} />
-    </SearchBarStyle>
+      <Button onClick={() => onClick(valueInput)} children={"Search..."} />
+    </>
   );
 };
 

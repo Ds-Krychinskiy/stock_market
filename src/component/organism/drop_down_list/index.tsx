@@ -1,4 +1,4 @@
-import DropDown from "../../atoms/drop_down_list";
+import DropDown from "../../molecule/drop_down_list";
 import {
   listBeta,
   listCountry,

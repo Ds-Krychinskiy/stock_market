@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
 import { StateProps } from "../../../state/Stock_Screener_State/interface";
 import Button from "../../atoms/button";
@@ -22,20 +21,18 @@ const BasicModal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <Button variant={"chart"} onClick={handleOpen}>Расширенный поиск</Button>
-      <Dialog
+      <Button onClick={handleOpen}>Advanced Search...</Button>
+      <Modal 
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+        <Box >
             <Drop state={state} onChange={getValueFromDropdownList}></Drop>
-          </DialogContentText>
-        </DialogContent>
-        <Button variant={"chart"} onClick={() => console.log()} children={"Search..."} />
-      </Dialog>
+            <Button onClick={() => console.log()} children={"Search..."} />
+        </Box>
+      </Modal>
     </>
   );
 };

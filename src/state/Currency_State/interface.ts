@@ -1,4 +1,4 @@
-export interface CryptocurrencyProps {
+export interface CurrencyProps {
   date: string;
   open: number;
   low: number;

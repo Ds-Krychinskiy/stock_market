@@ -1,25 +1,71 @@
-import Typograhy from "../../atoms/typograhy";
 import Refs from "../../molecule/refs";
-import Inform from "../../temlates/portfolio";
-import { PortfolioStyle } from "./style";
-import { Link } from "react-router-dom";
+import { MInform } from "../../temlates/portfolio";
+import { PortfolioStyle, ChartWrapp } from "./style";
 import { StockScreenerRoute } from "../../../consts";
+import { MTypography } from "../../atoms/typograhy/index";
+import { textAnimation } from "../../../animation/TextAmination";
+import Link from "../../molecule/link";
+import {
+  Legend,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+} from "recharts";
+
+interface DataProps {
+  name: string;
+  A: number;
+  fullMark: number;
+}
 const Portfolio = () => {
+  const data: DataProps[] = [
+    { name: "MobX", A: 4, fullMark: 5 },
+    { name: "React", A: 4, fullMark: 5 },
+    { name: "Redux", A: 4, fullMark: 5 },
+    { name: "JS", A: 4, fullMark: 5 },
+    { name: "CSS", A: 3, fullMark: 5 },
+    { name: "HTML", A: 3, fullMark: 5 },
+  ];
+
   return (
     <PortfolioStyle>
-      <Inform>
+      <MInform initial="hidden" whileInView="visible">
         <>
-          <Typograhy variant={"hello"}>Hello World!</Typograhy>
-          <Typograhy variant={"hello"}>My name is Denis</Typograhy>
-          <Typograhy variant={"hello"}>and this is my pet-project</Typograhy>
-          <Typograhy variant={"hello"}>My skills:</Typograhy>
-          <Typograhy variant={"hello"}>Буду рад любому фидбеку!</Typograhy>
-          <Link to={`${StockScreenerRoute}`}>Okey, lets go</Link>
+          <MTypography custom={1} variants={textAnimation} size={"3rem"}>
+            Hello World!
+          </MTypography>
+          <MTypography custom={2} variants={textAnimation} size={"3em"}>
+            My name is Denis
+          </MTypography>
+          <MTypography custom={3} variants={textAnimation} size={"3em"}>
+            and this is my pet-project
+          </MTypography>
+          <ChartWrapp custom={5} variants={textAnimation}>
+            <RadarChart outerRadius={90} width={400} height={250} data={data}>
+              <PolarGrid stroke="#dcfa16" />
+              <PolarAngleAxis dataKey="name" stroke="#dcfa16" />
+              <PolarRadiusAxis angle={30} domain={[0, 5]} stroke="#dcfa16" />
+              <Radar
+                name="My skills"
+                dataKey="A"
+                stroke="#2451b7"
+                fill="#1c3778"
+                fillOpacity={0.6}
+              />
+              <Legend />
+            </RadarChart>
+          </ChartWrapp>
+          <MTypography custom={5} variants={textAnimation} size={"3em"}>
+            Буду рад любому фидбеку!
+          </MTypography>
+          <Link way={`${StockScreenerRoute}`}>Okey, lets go</Link>
           <Refs href={"https://t.me/denis_krychinskiy"} target={"blank"}>
             Telegram
           </Refs>
         </>
-      </Inform>
+      </MInform>
     </PortfolioStyle>
   );
 };

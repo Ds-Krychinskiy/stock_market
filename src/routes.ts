@@ -1,5 +1,11 @@
 import { lazy } from "react";
-import { StockScreenerRoute, PortfolioRoute, CompanyRoute } from "./consts";
+import CurrencyPage from "./component/pages/currency";
+import {
+  StockScreenerRoute,
+  PortfolioRoute,
+  CompanyRoute,
+  Currency,
+} from "./consts";
 const CompanyPage = lazy(() => import("./component/pages/companyPage"));
 const Portfolio = lazy(() => import("./component/pages/portfolio"));
 const StockScreener = lazy(() => import("./component/pages/stock_screener"));
@@ -14,7 +20,11 @@ export const MapPages = [
     RouteComponent: PortfolioRoute,
   },
   {
+    Component: CurrencyPage,
+    RouteComponent: Currency,
+  },
+  {
     Component: CompanyPage,
-    RouteComponent: CompanyRoute + "/:name",
+    RouteComponent: StockScreenerRoute + CompanyRoute + "/:name",
   },
 ];

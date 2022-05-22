@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const CompanyPageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
 export const MultipliersWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -3,7 +3,7 @@ export const Currency = "currency";
 export const StockScreenerRoute = "stock-screener";
 export const Cryptocurrency = "cryptocurrency";
 export const PortfolioRoute = "";
-export const CompanyRoute = "company";
+export const CompanyRoute = "/company";
 
 export const ListRoute = [
   {
@@ -15,15 +15,7 @@ export const ListRoute = [
     way: StockScreenerRoute,
   },
   {
-    label: "ETF",
-    way: Etf,
-  },
-  {
     label: "Currency",
     way: Currency,
-  },
-  {
-    label: "Cryptocurrency",
-    way: Cryptocurrency,
   },
 ];

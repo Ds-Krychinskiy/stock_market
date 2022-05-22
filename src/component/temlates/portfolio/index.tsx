@@ -1,10 +1,13 @@
 import { ReactElement } from "react";
 import { InformStyle } from "./style";
+import { motion } from "framer-motion";
+import { forwardRef } from "react";
+
 interface InformProps {
   children: ReactElement;
 }
-const Inform: React.FC<InformProps> = ({ children }) => {
-  return <InformStyle>{children}</InformStyle>;
-};
+export const Inform: React.FC<InformProps> = forwardRef(({ children }, ref) => {
+  return <InformStyle ref={ref}>{children}</InformStyle>;
+});
 
-export default Inform;
+export const MInform = motion(Inform);
