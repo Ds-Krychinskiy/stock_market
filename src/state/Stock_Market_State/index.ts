@@ -6,7 +6,6 @@ import {
   CompanyPriceProps,
   KeyExecutivesProps,
   SecFilingsProps,
-  PriceAtTheMomentProps,
   CompanyPriceForMondthProps,
 } from "./interface";
 
@@ -17,7 +16,6 @@ class StockState {
   executive: KeyExecutivesProps[] = [];
   filings: SecFilingsProps[] = [];
   price: CompanyPriceProps[] | CompanyPriceForMondthProps[] = [];
-  price_at_the_moment: PriceAtTheMomentProps[] = [];
   constructor() {
     makeAutoObservable(this);
   }
@@ -56,14 +54,6 @@ class StockState {
     }
   };
 
-  getPriceCompanyInRealTime = async () => {
-    try {
-      const state = await _axios.get(`quote-short/${this.valueInput}`);
-      this.price_at_the_moment = [...state.data];
-    } catch (error) {
-      console.log(error);
-    }
-  };
   getPriceForChart = async (time: string, count: number) => {
     try {
       const state = await _axios.get(

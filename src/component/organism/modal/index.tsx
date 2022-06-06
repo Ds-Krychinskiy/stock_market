@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 
 import { StateProps } from "../../../state/Stock_Screener_State/interface";
 import Button from "../../atoms/button";
@@ -22,15 +22,24 @@ const BasicModal: React.FC<ModalProps> = ({
   return (
     <>
       <Button onClick={handleOpen}>Advanced Search...</Button>
-      <Modal 
+      <Modal
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box >
-            <Drop state={state} onChange={getValueFromDropdownList}></Drop>
-            <Button onClick={() => console.log()} children={"Search..."} />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "5em",
+            height: "45em",
+            width: "100em",
+          }}
+        >
+          <Drop state={state} onChange={getValueFromDropdownList}></Drop>
+          <Button onClick={() => console.log()} children={"Search..."} />
         </Box>
       </Modal>
     </>

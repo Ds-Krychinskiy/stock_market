@@ -13,4 +13,3 @@ export const ChartWrapp = styled(motion.div)`
   justify-content: center;
   width: 100%;
 `;
-

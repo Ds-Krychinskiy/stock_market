@@ -9,6 +9,7 @@ import Ref from "../../atoms/ref";
 import { Typography } from "../../atoms/typograhy";
 import Paragraph from "../../molecule/paragraph";
 import React from "react";
+import {  MultipliersWrapper } from "./style";
 const { multipliers, executive, filings, news } = Stock_Market_State;
 
 export const MapAccordion = [
@@ -149,12 +150,10 @@ export const MapAccordion = [
   },
 ];
 
-export const renderAccordion = () => {
-  return (
-    <>
-      {MapAccordion.map((e) => (
-        <Paragraph key={e.id} state={() => e.state()} />
-      ))}
-    </>
-  );
-};
+export const renderAccordion = () => (
+  <MultipliersWrapper>
+    {MapAccordion.map((e) => (
+      <Paragraph key={e.id} state={ e.state()} />
+    ))}
+  </MultipliersWrapper>
+);

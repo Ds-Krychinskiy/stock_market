@@ -1,14 +1,11 @@
-import { ReactNode } from "react";
-import { ParagraphStyle, Wrapp } from "./style";
+import { ParagraphStyle,  } from "./style";
 
 interface ParagraphProps {
-  state: () => ReactNode;
+  state: JSX.Element;
 }
 const Paragraph: React.FC<ParagraphProps> = ({ state }) => {
   return (
-    <Wrapp>
-      <ParagraphStyle>{state()}</ParagraphStyle>
-    </Wrapp>
+      <ParagraphStyle>{state}</ParagraphStyle>
   );
 };
 

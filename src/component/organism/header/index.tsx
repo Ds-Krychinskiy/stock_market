@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({
   setValueInput,
   onClick,
   listProps,
-  getValueFromDropdownList, 
+  getValueFromDropdownList,
 }) => {
   return (
     <HeaderStyle>
